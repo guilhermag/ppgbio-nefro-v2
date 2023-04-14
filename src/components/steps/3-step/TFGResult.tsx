@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const TFGResult = () => {
+const TFGResult = ({ checkForNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Resultado TFG</h2>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const HermatForm = () => {
+const HermatForm = ({ checkForNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Apresenta hermaturia ?</h2>

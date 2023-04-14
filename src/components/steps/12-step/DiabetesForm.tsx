@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const DiabetesForm = () => {
+const DiabetesForm = ({ checkForNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Tem diabetes ?</h2>

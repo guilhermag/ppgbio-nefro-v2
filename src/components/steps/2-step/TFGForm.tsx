@@ -1,11 +1,117 @@
 // Step 2
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { CheckerNextStep } from '../../../shared/interfaces/form';
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from '@mui/material';
 
-const TFGForm = () => {
+const TFGForm = ({ checkForNextStep }: CheckerNextStep) => {
+  const [age, setAge] = useState('');
+  const [creatinine, setCreatinine] = useState('');
+  const [gender, setGender] = useState('');
+  const [ethnicity, setEthnicity] = useState('');
+
+  const handleChangeSelect = (event: SelectChangeEvent) => {
+    setEthnicity(event.target.value);
+  };
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.name === 'creatinine') {
+      setCreatinine(event.target.value);
+    } else if (event.target.name === 'age') {
+      setAge(event.target.value);
+    } else if (event.target.name === 'gender') {
+      setGender(event.target.value);
+    }
+  };
+
+  useEffect(() => {
+    const formData = {
+      age,
+      creatinine,
+      gender,
+      ethnicity,
+    };
+
+    if (ethnicity === 'white') {
+      checkForNextStep(false);
+    } else {
+      checkForNextStep(true);
+    }
+  });
+
   return (
     <div>
       <h2>Calcular TFG</h2>
+      <Box
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+      >
+        <div>
+          <TextField
+            error={false}
+            id='outlined-error'
+            label='Idade'
+            name='age'
+            onChange={handleChangeInput}
+          />
+        </div>
+        <div>
+          <TextField
+            error={false}
+            id='outlined-error'
+            label='Creatinina'
+            name='creatinine'
+            onChange={handleChangeInput}
+          />
+        </div>
+        <div>
+          <FormControl>
+            <FormLabel id='demo-radio-buttons-group-label'>Gênero</FormLabel>
+            <RadioGroup
+              aria-labelledby='demo-radio-buttons-group-label'
+              name='gender'
+              row
+              onChange={handleChangeInput}
+            >
+              <FormControlLabel
+                value='female'
+                control={<Radio />}
+                label='Feminino'
+              />
+              <FormControlLabel
+                value='male'
+                control={<Radio />}
+                label='Masculino'
+              />
+            </RadioGroup>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id='demo-simple-select-label'>Etnia</InputLabel>
+            <Select
+              labelId='demo-simple-select-label'
+              id='demo-simple-select'
+              value={ethnicity}
+              label='Etnia'
+              onChange={handleChangeSelect}
+            >
+              <MenuItem value={'white'}>Branco</MenuItem>
+              <MenuItem value={'afro-american'}>Negro ou pardo</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+      </Box>
     </div>
   );
 };

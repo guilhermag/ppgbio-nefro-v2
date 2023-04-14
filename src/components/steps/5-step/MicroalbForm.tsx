@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const MicroalbForm = () => {
+const MicroalbForm = ({ checkForNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Aprensenta microalbuminuria ?</h2>

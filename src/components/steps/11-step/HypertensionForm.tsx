@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const HypertensionForm = () => {
+const HypertensionForm = ({ checkForNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Tem hipertensão ?</h2>

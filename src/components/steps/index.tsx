@@ -14,7 +14,7 @@ import NefrolitForm from './9-step/NefrolitForm';
 import FinalStep from './final-step/FinalStep';
 
 const components = [
-  <ExamsForm />,
+  // <ExamsForm />,
   <TFGForm />,
   <TFGResult />,
   <RenalFunctionForm />,

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const InfectionForm = () => {
+const InfectionForm = ({ checkForNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Tem infecção recorrente ?</h2>
