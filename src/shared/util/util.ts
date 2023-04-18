@@ -1,6 +1,11 @@
 import * as CONSTS from '../constants';
 import { FormData } from '../interfaces/form';
 
+export function checkFormDataIsPopulated(data: FormData): boolean {
+  const values = Object.values(data);
+  return values.every((value) => value !== '');
+}
+
 export function getTFG(
   ethnicity: string,
   gender: string,
@@ -33,7 +38,21 @@ export function getTFG(
   return (finalMultiplier * minValue * maxValue * ageValue).toFixed(2);
 }
 
-export function checkFormDataIsPopulated(data: FormData): boolean {
-  const values = Object.values(data);
-  return values.every((value) => value !== '');
+//
+export function selectStageByTFG(tfgValue: string, stage: string): string {
+  const tfgNumber = Number(tfgValue);
+  console.log(tfgNumber);
+  if (tfgNumber < 15 && stage === '5') {
+    return 'selected-row';
+  } else if (tfgNumber < 30 && stage === '4') {
+    return 'selected-row';
+  } else if (tfgNumber < 30 && stage === '3') {
+    return 'selected-row';
+  } else if (tfgNumber < 30 && stage === '2') {
+    return 'selected-row';
+  } else if (tfgNumber < 30 && (stage === '0' || stage === '1')) {
+    return 'selected-row';
+  } else {
+    return '';
+  }
 }

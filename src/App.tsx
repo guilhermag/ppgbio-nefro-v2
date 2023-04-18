@@ -2,13 +2,10 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import './App.css';
-import { formSteps } from './components/steps';
 import { FormComponent } from './shared/interfaces/form';
 import { useForm } from './hooks/useForm';
 import { Box, Button, IconButton } from '@mui/material';
 import { useState } from 'react';
-import ExamsForm from './components/steps/1-step/ExamsForm';
-import TFGResult from './components/steps/3-step/TFGResult';
 import TFGForm from './components/steps/2-step/TFGForm';
 import RenalFunctionForm from './components/steps/4-step/RenalFunctionForm';
 import MicroalbForm from './components/steps/5-step/MicroalbForm';
@@ -20,6 +17,7 @@ import InfectionForm from './components/steps/10-step/InfectionForm';
 import HypertensionForm from './components/steps/11-step/HypertensionForm';
 import DiabetesForm from './components/steps/12-step/DiabetesForm';
 import FinalStep from './components/steps/final-step/FinalStep';
+import TFGResult from './components/steps/3-step/TFGResult';
 
 function App() {
   const [disableNextStep, setDisableNextStep] = useState(true);

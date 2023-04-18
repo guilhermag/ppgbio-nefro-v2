@@ -12,6 +12,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+import { selectStageByTFG } from '../../../shared/util/util';
 
 function createData(stage: string, tfg: string, renalInsufficiency: string) {
   return { stage, tfg, renalInsufficiency };
@@ -46,7 +47,7 @@ const TFGResult = ({ disableNextStep }: CheckerNextStep) => {
               <TableRow
                 key={row.stage}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                className='row-test'
+                className={selectStageByTFG(tfgValue, row.stage)}
               >
                 <TableCell component='th' scope='row'>
                   {row.stage}

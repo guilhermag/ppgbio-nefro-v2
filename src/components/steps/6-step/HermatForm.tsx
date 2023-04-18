@@ -1,6 +1,7 @@
 // Step 6
 
 import React from 'react';
+import { CheckerNextStep } from '../../../shared/interfaces/form';
 
 const HermatForm = ({ disableNextStep }: CheckerNextStep) => {
   return (

@@ -1,6 +1,7 @@
 // Step 10
 
 import React from 'react';
+import { CheckerNextStep } from '../../../shared/interfaces/form';
 
 const InfectionForm = ({ disableNextStep }: CheckerNextStep) => {
   return (

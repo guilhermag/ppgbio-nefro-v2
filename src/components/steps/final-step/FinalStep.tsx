@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckerNextStep } from '../../../shared/interfaces/form';
 
 const FinalStep = ({ disableNextStep }: CheckerNextStep) => {
   return (

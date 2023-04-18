@@ -1,6 +1,7 @@
 // Step 8
 
 import React from 'react';
+import { CheckerNextStep } from '../../../shared/interfaces/form';
 
 const DPRForm = ({ disableNextStep }: CheckerNextStep) => {
   return (
