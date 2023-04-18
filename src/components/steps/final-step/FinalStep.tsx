@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FinalStep = ({ checkForNextStep }: CheckerNextStep) => {
+const FinalStep = ({ disableNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Encaminhamento para o nefro ou não.</h2>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const NefrolitForm = ({ checkForNextStep }: CheckerNextStep) => {
+const NefrolitForm = ({ disableNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Nefrolitíase recorrente ?</h2>

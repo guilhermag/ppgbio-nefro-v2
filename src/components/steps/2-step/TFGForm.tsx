@@ -1,7 +1,7 @@
 // Step 2
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep, FormData } from '../../../shared/interfaces/form';
 import {
   Box,
   FormControl,
@@ -15,8 +15,9 @@ import {
   SelectChangeEvent,
   TextField,
 } from '@mui/material';
+import { checkFormDataIsPopulated, getTFG } from '../../../shared/util/util';
 
-const TFGForm = ({ checkForNextStep }: CheckerNextStep) => {
+const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
   const [age, setAge] = useState('');
   const [creatinine, setCreatinine] = useState('');
   const [gender, setGender] = useState('');
@@ -36,23 +37,28 @@ const TFGForm = ({ checkForNextStep }: CheckerNextStep) => {
   };
 
   useEffect(() => {
-    const formData = {
-      age,
-      creatinine,
-      gender,
-      ethnicity,
+    const formData: FormData = {
+      age: age,
+      creatinine: creatinine,
+      gender: gender,
+      ethnicity: ethnicity,
     };
 
-    if (ethnicity === 'white') {
-      checkForNextStep(false);
+    const dataCheck = checkFormDataIsPopulated(formData);
+
+    if (dataCheck) {
+      const tfg = getTFG(ethnicity, gender, creatinine, age);
+      localStorage.setItem('tfgValue', tfg);
+      disableNextStep(false);
     } else {
-      checkForNextStep(true);
+      disableNextStep(true);
     }
   });
 
   return (
     <div>
       <h2>Calcular TFG</h2>
+      <p>Preencha todos os dados para calcular a TFG!</p>
       <Box
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },

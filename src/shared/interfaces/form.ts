@@ -3,5 +3,12 @@ export interface FormComponent {
 }
 
 export interface CheckerNextStep {
-  checkForNextStep: (check: boolean) => void;
+  disableNextStep: (check: boolean) => void;
+}
+
+export interface FormData {
+  age: string;
+  creatinine: string;
+  gender: string;
+  ethnicity: string;
 }

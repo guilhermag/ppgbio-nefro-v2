@@ -1,0 +1,9 @@
+export const DIV_MALE = 0.9;
+export const DIV_FEMALE = 0.7;
+export const POW_MIN_MALE = -0.411;
+export const POW_MIN_FEMALE = -0.329;
+export const POW_MAX = -1.209;
+export const AFRO_AMERICAN_MULTIPLIER = 1.159;
+export const AGE_BASE = 0.993;
+export const FEMALE_MULTIPLIER = 1.018;
+export const BASE_MULTIPLIER = 141;

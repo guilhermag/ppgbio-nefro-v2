@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const DPRForm = ({ checkForNextStep }: CheckerNextStep) => {
+const DPRForm = ({ disableNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Suspeita de doença policística renal ?</h2>

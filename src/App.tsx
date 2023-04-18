@@ -22,25 +22,25 @@ import DiabetesForm from './components/steps/12-step/DiabetesForm';
 import FinalStep from './components/steps/final-step/FinalStep';
 
 function App() {
-  const [nextStepChecker, setNextStepChecker] = useState(true);
-  const checkForNextStep = (check: boolean) => {
-    setNextStepChecker(check);
+  const [disableNextStep, setDisableNextStep] = useState(true);
+  const disableNextStepButton = (check: boolean) => {
+    setDisableNextStep(check);
   };
 
   const components = [
-    // <ExamsForm checkForNextStep={checkForNextStep} />,
-    <TFGForm checkForNextStep={checkForNextStep} />,
-    <TFGResult checkForNextStep={checkForNextStep} />,
-    <RenalFunctionForm checkForNextStep={checkForNextStep} />,
-    <MicroalbForm checkForNextStep={checkForNextStep} />,
-    <HermatForm checkForNextStep={checkForNextStep} />,
-    <CilinderForm checkForNextStep={checkForNextStep} />,
-    <DPRForm checkForNextStep={checkForNextStep} />,
-    <NefrolitForm checkForNextStep={checkForNextStep} />,
-    <InfectionForm checkForNextStep={checkForNextStep} />,
-    <HypertensionForm checkForNextStep={checkForNextStep} />,
-    <DiabetesForm checkForNextStep={checkForNextStep} />,
-    <FinalStep checkForNextStep={checkForNextStep} />,
+    // <ExamsForm disableNextStep={disableNextStepButton} />,
+    <TFGForm disableNextStep={disableNextStepButton} />,
+    <TFGResult disableNextStep={disableNextStepButton} />,
+    <RenalFunctionForm disableNextStep={disableNextStepButton} />,
+    <MicroalbForm disableNextStep={disableNextStepButton} />,
+    <HermatForm disableNextStep={disableNextStepButton} />,
+    <CilinderForm disableNextStep={disableNextStepButton} />,
+    <DPRForm disableNextStep={disableNextStepButton} />,
+    <NefrolitForm disableNextStep={disableNextStepButton} />,
+    <InfectionForm disableNextStep={disableNextStepButton} />,
+    <HypertensionForm disableNextStep={disableNextStepButton} />,
+    <DiabetesForm disableNextStep={disableNextStepButton} />,
+    <FinalStep disableNextStep={disableNextStepButton} />,
   ];
 
   const formComponents: FormComponent[] = components.map((component) => ({
@@ -81,7 +81,7 @@ function App() {
                 variant='outlined'
                 endIcon={<NavigateNextIcon />}
                 type='submit'
-                disabled={nextStepChecker}
+                disabled={disableNextStep}
               >
                 Avançar
               </Button>
