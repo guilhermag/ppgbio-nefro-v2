@@ -4,7 +4,7 @@ import { CheckerNextStep } from '../../../shared/interfaces/form';
 const FinalStep = ({ disableNextStep }: CheckerNextStep) => {
   return (
     <div>
-      <h2>Encaminhamento para o nefro ou não.</h2>
+      <h2>Sem encaminhamento.</h2>
     </div>
   );
 };

@@ -41,18 +41,20 @@ export function getTFG(
 //
 export function selectStageByTFG(tfgValue: string, stage: string): string {
   const tfgNumber = Number(tfgValue);
-  console.log(tfgNumber);
-  if (tfgNumber < 15 && stage === '5') {
-    return 'selected-row';
-  } else if (tfgNumber < 30 && stage === '4') {
-    return 'selected-row';
-  } else if (tfgNumber < 30 && stage === '3') {
-    return 'selected-row';
-  } else if (tfgNumber < 30 && stage === '2') {
-    return 'selected-row';
-  } else if (tfgNumber < 30 && (stage === '0' || stage === '1')) {
-    return 'selected-row';
+  if (stage === '1') stage = '0';
+  return getTFGStage(tfgNumber) === stage ? 'selected-row' : '';
+}
+
+function getTFGStage(tfgNumber: number) {
+  if (tfgNumber >= 90) {
+    return '0';
+  } else if (tfgNumber >= 60) {
+    return '2';
+  } else if (tfgNumber >= 30) {
+    return '3';
+  } else if (tfgNumber >= 15) {
+    return '4';
   } else {
-    return '';
+    return '5';
   }
 }

@@ -29,7 +29,7 @@ const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
 
     const resultCheck = newValue === 4 ? false : true;
     setError(resultCheck);
-    disableNextStep(resultCheck);
+    disableNextStep!(resultCheck);
   };
 
   return (

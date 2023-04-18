@@ -27,8 +27,13 @@ const rows = [
   createData('5', '< 15', 'IR Terminal ou Dialítica'),
 ];
 
-const TFGResult = ({ disableNextStep }: CheckerNextStep) => {
+const TFGResult = () => {
   const tfgValue = localStorage.getItem('tfgValue') || '';
+  if (Number(tfgValue) < 30) {
+    localStorage.setItem('nextStep', '12');
+  } else {
+    localStorage.setItem('nextStep', '13');
+  }
   return (
     <div>
       <h2>Resultado Taxa de filtração glomerular</h2>

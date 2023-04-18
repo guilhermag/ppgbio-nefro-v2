@@ -5,7 +5,7 @@ import './App.css';
 import { FormComponent } from './shared/interfaces/form';
 import { useForm } from './hooks/useForm';
 import { Box, Button, IconButton } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TFGForm from './components/steps/2-step/TFGForm';
 import RenalFunctionForm from './components/steps/4-step/RenalFunctionForm';
 import MicroalbForm from './components/steps/5-step/MicroalbForm';
@@ -18,27 +18,59 @@ import HypertensionForm from './components/steps/11-step/HypertensionForm';
 import DiabetesForm from './components/steps/12-step/DiabetesForm';
 import FinalStep from './components/steps/final-step/FinalStep';
 import TFGResult from './components/steps/3-step/TFGResult';
+import ExamsForm from './components/steps/1-step/ExamsForm';
+import FinalNephroStep from './components/steps/final-nephro-step/FinalNephroStep';
 
 function App() {
   const [disableNextStep, setDisableNextStep] = useState(true);
+  const [nextStep, setNextStep] = useState(2);
+
   const disableNextStepButton = (check: boolean) => {
     setDisableNextStep(check);
   };
 
   const components = [
-    // <ExamsForm disableNextStep={disableNextStepButton} />,
+    <ExamsForm disableNextStep={disableNextStepButton} />,
     <TFGForm disableNextStep={disableNextStepButton} />,
-    <TFGResult disableNextStep={disableNextStepButton} />,
-    <RenalFunctionForm disableNextStep={disableNextStepButton} />,
-    <MicroalbForm disableNextStep={disableNextStepButton} />,
-    <HermatForm disableNextStep={disableNextStepButton} />,
-    <CilinderForm disableNextStep={disableNextStepButton} />,
-    <DPRForm disableNextStep={disableNextStepButton} />,
-    <NefrolitForm disableNextStep={disableNextStepButton} />,
-    <InfectionForm disableNextStep={disableNextStepButton} />,
-    <HypertensionForm disableNextStep={disableNextStepButton} />,
-    <DiabetesForm disableNextStep={disableNextStepButton} />,
-    <FinalStep disableNextStep={disableNextStepButton} />,
+    <TFGResult />,
+    <RenalFunctionForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <MicroalbForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <HermatForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <CilinderForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <DPRForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <NefrolitForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <InfectionForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <HypertensionForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <DiabetesForm
+      disableNextStep={disableNextStepButton}
+      setNextStep={setNextStep}
+    />,
+    <FinalNephroStep />,
+    <FinalStep />,
   ];
 
   const formComponents: FormComponent[] = components.map((component) => ({
@@ -48,13 +80,22 @@ function App() {
   const { currentStep, currentComponent, changeStep, isFirstStep, isLastStep } =
     useForm(formComponents);
 
+  useEffect(() => {
+    const nextStepStorage = Number(localStorage.getItem('nextStep'));
+    setNextStep(nextStepStorage);
+  });
+
   return (
     <div className='app'>
       <div className='header'></div>
       <div className='form-container'>
         <form
           onSubmit={(e) => {
-            changeStep(currentStep + 1, e);
+            if (currentStep < 2) {
+              changeStep(currentStep + 1, e);
+            } else {
+              changeStep(nextStep, e);
+            }
           }}
         >
           <div className='inputs-container'>{currentComponent.component}</div>

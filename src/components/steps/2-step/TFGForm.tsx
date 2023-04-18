@@ -49,9 +49,9 @@ const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
     if (dataCheck) {
       const tfg = getTFG(ethnicity, gender, creatinine, age);
       localStorage.setItem('tfgValue', tfg);
-      disableNextStep(false);
+      disableNextStep!(false);
     } else {
-      disableNextStep(true);
+      disableNextStep!(true);
     }
   });
 
