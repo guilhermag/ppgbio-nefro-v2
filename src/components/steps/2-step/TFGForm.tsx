@@ -7,6 +7,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Radio,
@@ -17,7 +18,7 @@ import {
 } from '@mui/material';
 import { checkFormDataIsPopulated, getTFG } from '../../../shared/util/util';
 
-export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
+export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
   const [age, setAge] = useState('');
   const [creatinine, setCreatinine] = useState('');
   const [gender, setGender] = useState('');
@@ -49,9 +50,7 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
     if (dataCheck) {
       const tfg = getTFG(ethnicity, gender, creatinine, age);
       localStorage.setItem('tfgValue', tfg);
-      disableNextStep!(false);
-    } else {
-      disableNextStep!(true);
+      selectNextStep(2);
     }
   });
 
@@ -70,7 +69,11 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
             id='outlined-error'
             label='Idade'
             name='age'
+            type='number'
             required
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>kg</InputAdornment>,
+            }}
             onChange={handleChangeInput}
           />
         </div>
@@ -80,7 +83,16 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
             id='outlined-error'
             label='Creatinina'
             name='creatinine'
+            type='number'
+            inputProps={{
+              step: 0.01,
+            }}
             required
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>mg/dL</InputAdornment>
+              ),
+            }}
             onChange={handleChangeInput}
           />
         </div>

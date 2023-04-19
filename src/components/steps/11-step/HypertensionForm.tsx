@@ -3,7 +3,7 @@
 import React from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
-export const HypertensionForm = ({ disableNextStep }: CheckerNextStep) => {
+export const HypertensionForm = ({ selectNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Tem hipertensão ?</h2>

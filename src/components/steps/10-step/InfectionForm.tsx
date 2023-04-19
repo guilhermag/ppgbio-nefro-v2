@@ -3,7 +3,7 @@
 import React from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
-export const InfectionForm = ({ disableNextStep }: CheckerNextStep) => {
+export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Tem infecção recorrente ?</h2>

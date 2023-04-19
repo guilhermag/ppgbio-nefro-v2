@@ -3,7 +3,7 @@
 import React from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
-export const NefrolitForm = ({ disableNextStep }: CheckerNextStep) => {
+export const NefrolitForm = ({ selectNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Nefrolitíase recorrente ?</h2>

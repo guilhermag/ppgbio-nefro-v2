@@ -1,6 +1,6 @@
 // Step 3
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './TFGResult.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
@@ -27,9 +27,20 @@ const rows = [
   createData('5', '< 15', 'IR Terminal ou Dialítica'),
 ];
 
-export const TFGResult = () => {
+export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
   const tfgValue = localStorage.getItem('tfgValue') || '';
-  setNextStep(tfgValue);
+  const tfgNumber = Number(tfgValue);
+
+  useEffect(() => {
+    if (tfgNumber > 60) {
+      selectNextStep(7);
+    } else if (tfgNumber >= 30) {
+      selectNextStep(3);
+    } else if (tfgNumber < 30) {
+      selectNextStep(12);
+    }
+  }, []);
+
   return (
     <div>
       <h2>Resultado Taxa de filtração glomerular</h2>
@@ -64,18 +75,4 @@ export const TFGResult = () => {
   );
 };
 
-const setNextStep = (tfgValue: string) => {
-  if (tfgValue === '') {
-    localStorage.setItem('nextStep', '0');
-    return;
-  }
-
-  const tfgNumber = Number(tfgValue);
-  if (tfgNumber > 60) {
-    localStorage.setItem('nextStep', '7');
-  } else if (tfgNumber >= 30) {
-    localStorage.setItem('nextStep', '3');
-  } else {
-    localStorage.setItem('nextStep', '12');
-  }
-};
+const setNextStep = (tfgValue: string) => {};

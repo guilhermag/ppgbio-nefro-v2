@@ -1,6 +1,6 @@
 // Step 8
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './DPRForm.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
@@ -12,48 +12,55 @@ import {
 } from '@mui/material';
 import { OPTIONS } from '../../../shared/constants/dprOptions';
 
-export const DPRForm = ({ disableNextStep }: CheckerNextStep) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {};
+export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const optionSelected = event.target.value;
+    if (optionSelected === 'option6') {
+      localStorage.setItem('nextStep', '8');
+    } else {
+      localStorage.setItem('nextStep', '12');
+    }
+  };
 
   return (
     <div>
       <h2>Suspeita de doença policística renal ?</h2>
-      <p>Avaliação pela US ou TC</p>
+      <p>Selecione a situação que mais </p>
       <div className='center-content left-content'>
         <FormControl>
           <FormLabel>Histórico familiar positivo</FormLabel>
           <RadioGroup name='history' onChange={handleChange}>
             <FormControlLabel
               value='option1'
-              control={<Radio />}
+              control={<Radio required />}
               label={OPTIONS.OPTION_1}
             />
 
             <FormControlLabel
               value='option2'
-              control={<Radio />}
+              control={<Radio required />}
               label={OPTIONS.OPTION_2}
             />
             <FormControlLabel
               value='option3'
-              control={<Radio />}
+              control={<Radio required />}
               label={OPTIONS.OPTION_3}
             />
             <FormLabel>Histórico familiar negativo:</FormLabel>
             <FormControlLabel
               value='option4'
-              control={<Radio />}
+              control={<Radio required />}
               label={OPTIONS.OPTION_4}
             />
             <FormControlLabel
               value='option5'
-              control={<Radio />}
+              control={<Radio required />}
               label={OPTIONS.OPTION_5}
             />
             <FormLabel>Sem histórico e sem a presença de cistos:</FormLabel>
             <FormControlLabel
               value='option6'
-              control={<Radio />}
+              control={<Radio required />}
               label={OPTIONS.OPTION_NONE}
             />
           </RadioGroup>

@@ -3,8 +3,7 @@ export interface FormComponent {
 }
 
 export interface CheckerNextStep {
-  disableNextStep?: (check: boolean) => void;
-  clicked?: boolean;
+  selectNextStep: (nextStep: number) => void;
 }
 
 export interface FormData {
