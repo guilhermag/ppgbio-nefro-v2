@@ -26,24 +26,31 @@ import {
 function App() {
   const [disableNextStep, setDisableNextStep] = useState(true);
   const [nextStep, setNextStep] = useState(2);
+  const [clicked, setClicked] = useState(false);
 
   const disableNextStepButton = (check: boolean) => {
     setDisableNextStep(check);
   };
 
   const components = [
-    <ExamsForm disableNextStep={disableNextStepButton} />,
-    <TFGForm disableNextStep={disableNextStepButton} />,
+    <ExamsForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <TFGForm disableNextStep={disableNextStepButton} clicked={clicked} />,
     <TFGResult />,
-    <RenalFunctionForm disableNextStep={disableNextStepButton} />,
-    <MicroalbForm disableNextStep={disableNextStepButton} />,
-    <HermatForm disableNextStep={disableNextStepButton} />,
-    <CilinderForm disableNextStep={disableNextStepButton} />,
-    <DPRForm disableNextStep={disableNextStepButton} />,
-    <NefrolitForm disableNextStep={disableNextStepButton} />,
-    <InfectionForm disableNextStep={disableNextStepButton} />,
-    <HypertensionForm disableNextStep={disableNextStepButton} />,
-    <DiabetesForm disableNextStep={disableNextStepButton} />,
+    <RenalFunctionForm
+      disableNextStep={disableNextStepButton}
+      clicked={clicked}
+    />,
+    <MicroalbForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <HermatForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <CilinderForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <DPRForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <NefrolitForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <InfectionForm disableNextStep={disableNextStepButton} clicked={clicked} />,
+    <HypertensionForm
+      disableNextStep={disableNextStepButton}
+      clicked={clicked}
+    />,
+    <DiabetesForm disableNextStep={disableNextStepButton} clicked={clicked} />,
     <FinalNephroStep />,
     <FinalStep />,
   ];
@@ -61,20 +68,29 @@ function App() {
     setNextStep(nextStepStorage);
   });
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setClicked(true);
+    if (disableNextStep) {
+      setTimeout(() => {
+        setClicked(false);
+      }, 5000);
+      return;
+    } else {
+      if (currentStep < 2) {
+        changeStep(currentStep + 1);
+      } else {
+        changeStep(nextStep);
+      }
+    }
+  };
+
   return (
     <div className='screen-container'>
       <div className='app-container'>
         <div className='header'></div>
         <div className='form-container '>
-          <form
-            onSubmit={(e) => {
-              if (currentStep < 2) {
-                changeStep(currentStep + 1, e);
-              } else {
-                changeStep(nextStep, e);
-              }
-            }}
-          >
+          <form onSubmit={handleSubmit}>
             <div className='inputs-container'>{currentComponent.component}</div>
 
             <div className='actions center-content'>
@@ -84,7 +100,7 @@ function App() {
                 <IconButton
                   aria-label='refresh'
                   color='primary'
-                  onClick={(e) => changeStep(0, e)}
+                  onClick={(e) => changeStep(0)}
                 >
                   <RefreshIcon />
                 </IconButton>
@@ -97,7 +113,6 @@ function App() {
                   variant='outlined'
                   endIcon={<NavigateNextIcon />}
                   type='submit'
-                  disabled={disableNextStep}
                 >
                   Avançar
                 </Button>

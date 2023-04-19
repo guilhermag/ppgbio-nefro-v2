@@ -6,8 +6,7 @@ export function useForm(steps: FormComponent[]) {
   const isLastStep = currentStep + 1 >= 12 ? true : false;
   const isFirstStep = currentStep === 0 ? true : false;
 
-  function changeStep(index: number, event: React.FormEvent) {
-    event.preventDefault();
+  function changeStep(index: number) {
     if (index < 0 || index >= steps.length) return;
     setCurrentStep(index);
   }

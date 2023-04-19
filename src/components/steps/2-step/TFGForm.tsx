@@ -70,6 +70,7 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
             id='outlined-error'
             label='Idade'
             name='age'
+            required
             onChange={handleChangeInput}
           />
         </div>
@@ -79,6 +80,7 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
             id='outlined-error'
             label='Creatinina'
             name='creatinine'
+            required
             onChange={handleChangeInput}
           />
         </div>
@@ -93,12 +95,12 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
             >
               <FormControlLabel
                 value='female'
-                control={<Radio />}
+                control={<Radio required />}
                 label='Feminino'
               />
               <FormControlLabel
                 value='male'
-                control={<Radio />}
+                control={<Radio required />}
                 label='Masculino'
               />
             </RadioGroup>
@@ -111,6 +113,7 @@ export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
               value={ethnicity}
               label='Etnia'
               onChange={handleChangeSelect}
+              required
             >
               <MenuItem value={'white'}>Branco</MenuItem>
               <MenuItem value={'afro-american'}>Negro ou pardo</MenuItem>

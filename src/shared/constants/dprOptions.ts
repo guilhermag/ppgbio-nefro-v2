@@ -9,4 +9,5 @@ export const OPTIONS = {
     '10 ou mais cistos em cada rim, principalmente se rins aumentados bilateralmente.',
   OPTION_5:
     'Presença concomitante de cistos hepáticos, pancreáticos ou esplênicos.',
+  OPTION_NONE: 'Nenhum histórico e sem presença de cistos',
 };

@@ -1,14 +1,11 @@
 // Step 8
 
-import React, { useState } from 'react';
+import React from 'react';
 import './DPRForm.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
-  Checkbox,
   FormControl,
   FormControlLabel,
-  FormGroup,
-  FormHelperText,
   FormLabel,
   Radio,
   RadioGroup,
@@ -16,27 +13,7 @@ import {
 import { OPTIONS } from '../../../shared/constants/dprOptions';
 
 export const DPRForm = ({ disableNextStep }: CheckerNextStep) => {
-  const [isNegativeOptionSelected, setIsNegativeOptionSelected] =
-    useState(false);
-  const [isPositiveOptionSelected, setIsPositiveOptionSelected] =
-    useState(false);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const optionGroup = event.target.name;
-    switch (optionGroup) {
-      case 'positiveHistory':
-        setIsPositiveOptionSelected(true);
-        break;
-      case 'negativeHistory':
-        setIsNegativeOptionSelected(true);
-        break;
-      default:
-        setIsPositiveOptionSelected(false);
-        setIsNegativeOptionSelected(false);
-        break;
-    }
-    console.log(event.target.checked);
-  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {};
 
   return (
     <div>
@@ -45,7 +22,7 @@ export const DPRForm = ({ disableNextStep }: CheckerNextStep) => {
       <div className='center-content left-content'>
         <FormControl>
           <FormLabel>Histórico familiar positivo</FormLabel>
-          <RadioGroup name='positiveHistory' onChange={handleChange}>
+          <RadioGroup name='history' onChange={handleChange}>
             <FormControlLabel
               value='option1'
               control={<Radio />}
@@ -72,6 +49,12 @@ export const DPRForm = ({ disableNextStep }: CheckerNextStep) => {
               value='option5'
               control={<Radio />}
               label={OPTIONS.OPTION_5}
+            />
+            <FormLabel>Sem histórico e sem a presença de cistos:</FormLabel>
+            <FormControlLabel
+              value='option6'
+              control={<Radio />}
+              label={OPTIONS.OPTION_NONE}
             />
           </RadioGroup>
         </FormControl>

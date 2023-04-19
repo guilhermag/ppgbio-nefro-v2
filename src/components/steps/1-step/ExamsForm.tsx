@@ -8,16 +8,18 @@ import {
   FormHelperText,
   FormLabel,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
-export const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
-  const [error, setError] = useState(true);
+export const ExamsForm = ({ disableNextStep, clicked }: CheckerNextStep) => {
+  const [error, setError] = useState(false);
   const [counterCheck, setCounterCheck] = useState(0);
+  const [helperText, setHelpertText] = useState('');
+  let newValue = 0;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const statusSelected = event.target.checked;
-    let newValue = 0;
+    newValue = 0;
 
     if (statusSelected) {
       newValue = counterCheck + 1;
@@ -28,9 +30,23 @@ export const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
     setCounterCheck(newValue);
 
     const resultCheck = newValue === 4 ? false : true;
-    setError(resultCheck);
     disableNextStep!(resultCheck);
   };
+
+  useEffect(() => {
+    const resultCheck = newValue === 4 ? false : true;
+    if (resultCheck && clicked) {
+      setError(resultCheck);
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
+      setHelpertText(
+        'Para prosseguir se certifique que todos os exames foram feitos!'
+      );
+    } else {
+      setHelpertText('');
+    }
+  });
 
   return (
     <div>
@@ -56,9 +72,7 @@ export const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
             label='Ultrassom de aparelho urinário.'
           />
         </FormGroup>
-        <FormHelperText>
-          Para prosseguir se certifique que todos os exames foram feitos!
-        </FormHelperText>
+        <FormHelperText>{helperText}</FormHelperText>
       </FormControl>
     </div>
   );

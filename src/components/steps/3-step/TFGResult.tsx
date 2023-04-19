@@ -64,7 +64,7 @@ export const TFGResult = () => {
   );
 };
 
-function setNextStep(tfgValue: string) {
+const setNextStep = (tfgValue: string) => {
   if (tfgValue === '') {
     localStorage.setItem('nextStep', '0');
     return;
@@ -78,4 +78,4 @@ function setNextStep(tfgValue: string) {
   } else {
     localStorage.setItem('nextStep', '12');
   }
-}
+};
