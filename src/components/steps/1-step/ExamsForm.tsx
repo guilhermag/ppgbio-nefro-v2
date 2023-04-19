@@ -5,13 +5,19 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText,
   FormLabel,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
 export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
+  const checkOptions = [
+    { name: 'creatine', label: 'Creatinina.' },
+    { name: 'urine', label: 'Urina I.' },
+    { name: 'microalb', label: 'Microalbuminuria.' },
+    { name: 'ultrasound', label: 'Ultrassom de aparelho urinário.' },
+  ];
+
   const handleChange = () => {
     selectNextStep(1);
   };
@@ -25,28 +31,15 @@ export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
       <FormControl>
         <FormLabel component='legend'>Lista de exames realizados:</FormLabel>
         <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox name='creatinine' onChange={handleChange} required />
-            }
-            label='Creatinina'
-          />
-          <FormControlLabel
-            control={<Checkbox name='urine' onChange={handleChange} required />}
-            label='Urina I'
-          />
-          <FormControlLabel
-            control={
-              <Checkbox name='microalb' onChange={handleChange} required />
-            }
-            label='Microalbuminuria.'
-          />
-          <FormControlLabel
-            control={
-              <Checkbox name='ultrasound' onChange={handleChange} required />
-            }
-            label='Ultrassom de aparelho urinário.'
-          />
+          {checkOptions.map((option, index) => (
+            <FormControlLabel
+              key={index}
+              control={
+                <Checkbox name={option.name} onChange={handleChange} required />
+              }
+              label={option.label}
+            />
+          ))}
         </FormGroup>
       </FormControl>
     </div>
