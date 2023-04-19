@@ -11,7 +11,7 @@ import {
 import React, { useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
-const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
+export const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
   const [error, setError] = useState(true);
   const [counterCheck, setCounterCheck] = useState(0);
 
@@ -63,5 +63,3 @@ const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
     </div>
   );
 };
-
-export default ExamsForm;

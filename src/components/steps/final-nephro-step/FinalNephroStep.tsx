@@ -1,11 +1,15 @@
 import React from 'react';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import './FinalNephroStep.css';
 
-const FinalNephroStep = () => {
+export const FinalNephroStep = () => {
   return (
-    <div>
-      <h2>Encaminhamento para o Nefrologista.</h2>
+    <div className='center-content'>
+      <h2>Encaminhar ao Nefrologista.</h2>
+      <div className='high-risk'>
+        <h2>Risco Alto.</h2>
+        <ReportProblemIcon color='error' />
+      </div>
     </div>
   );
 };
-
-export default FinalNephroStep;

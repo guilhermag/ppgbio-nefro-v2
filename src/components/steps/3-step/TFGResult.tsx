@@ -27,7 +27,7 @@ const rows = [
   createData('5', '< 15', 'IR Terminal ou Dialítica'),
 ];
 
-const TFGResult = () => {
+export const TFGResult = () => {
   const tfgValue = localStorage.getItem('tfgValue') || '';
   if (Number(tfgValue) < 30) {
     localStorage.setItem('nextStep', '12');
@@ -68,4 +68,4 @@ const TFGResult = () => {
   );
 };
 
-export default TFGResult;
+// function setNextStep

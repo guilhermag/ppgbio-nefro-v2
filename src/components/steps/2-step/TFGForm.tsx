@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import { checkFormDataIsPopulated, getTFG } from '../../../shared/util/util';
 
-const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
+export const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
   const [age, setAge] = useState('');
   const [creatinine, setCreatinine] = useState('');
   const [gender, setGender] = useState('');
@@ -56,7 +56,7 @@ const TFGForm = ({ disableNextStep }: CheckerNextStep) => {
   });
 
   return (
-    <div>
+    <div className='center-content'>
       <h2>Calcular TFG</h2>
       <p>Preencha todos os dados para calcular a TFG!</p>
       <Box

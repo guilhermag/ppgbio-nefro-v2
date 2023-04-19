@@ -4,7 +4,6 @@ export interface FormComponent {
 
 export interface CheckerNextStep {
   disableNextStep?: (check: boolean) => void;
-  setNextStep?: React.Dispatch<React.SetStateAction<number>>;
   currentStep?: number;
 }
 
