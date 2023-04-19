@@ -41,7 +41,7 @@ export const ExamsForm = ({ disableNextStep }: CheckerNextStep) => {
         <FormGroup>
           <FormControlLabel
             control={<Checkbox onChange={handleChange} name='creatinine' />}
-            label='Creatinina.'
+            label='Creatinina'
           />
           <FormControlLabel
             control={<Checkbox onChange={handleChange} name='urine' />}

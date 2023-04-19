@@ -29,11 +29,7 @@ const rows = [
 
 export const TFGResult = () => {
   const tfgValue = localStorage.getItem('tfgValue') || '';
-  if (Number(tfgValue) < 30) {
-    localStorage.setItem('nextStep', '12');
-  } else {
-    localStorage.setItem('nextStep', '13');
-  }
+  setNextStep(tfgValue);
   return (
     <div>
       <h2>Resultado Taxa de filtração glomerular</h2>
@@ -68,4 +64,18 @@ export const TFGResult = () => {
   );
 };
 
-// function setNextStep
+function setNextStep(tfgValue: string) {
+  if (tfgValue === '') {
+    localStorage.setItem('nextStep', '0');
+    return;
+  }
+
+  const tfgNumber = Number(tfgValue);
+  if (tfgNumber > 60) {
+    localStorage.setItem('nextStep', '7');
+  } else if (tfgNumber >= 30) {
+    localStorage.setItem('nextStep', '3');
+  } else {
+    localStorage.setItem('nextStep', '12');
+  }
+}

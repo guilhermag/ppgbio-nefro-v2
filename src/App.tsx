@@ -4,7 +4,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import './App.css';
 import { FormComponent } from './shared/interfaces/form';
 import { useForm } from './hooks/useForm';
-import { Box, Button, IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import {
   ExamsForm,
@@ -57,6 +57,7 @@ function App() {
 
   useEffect(() => {
     const nextStepStorage = Number(localStorage.getItem('nextStep'));
+    localStorage.removeItem('nextStep');
     setNextStep(nextStepStorage);
   });
 
