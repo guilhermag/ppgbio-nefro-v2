@@ -19,7 +19,7 @@ export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
   ];
 
   const handleChange = () => {
-    selectNextStep(11);
+    selectNextStep(1);
   };
 
   return (
