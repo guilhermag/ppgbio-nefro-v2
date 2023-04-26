@@ -55,11 +55,6 @@ function App() {
   const { currentStep, currentComponent, changeStep, isFirstStep, isLastStep } =
     useForm(formComponents);
 
-  // useEffect(() => {
-  //   setNextStep(Number(localStorage.getItem('nextStep')));
-  //   console.log('useEffect');
-  // }, [click]);
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     changeStep(nextStep);

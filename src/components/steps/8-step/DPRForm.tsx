@@ -10,7 +10,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { OPTIONS } from '../../../shared/constants/dprOptions';
+import { DPR_OPTIONS } from '../../../shared/constants/questions';
 
 export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +25,9 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
   return (
     <div>
       <h2>Suspeita de doença policística renal ?</h2>
-      <p>Selecione a situação que mais </p>
+      <p>
+        Selecione a situação que mais se adeque com o histórico do paciente:
+      </p>
       <div className='center-content left-content'>
         <FormControl>
           <FormLabel>Histórico familiar positivo</FormLabel>
@@ -33,35 +35,35 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
             <FormControlLabel
               value='option1'
               control={<Radio required />}
-              label={OPTIONS.OPTION_1}
+              label={DPR_OPTIONS.POSITIVE_1}
             />
 
             <FormControlLabel
               value='option2'
               control={<Radio required />}
-              label={OPTIONS.OPTION_2}
+              label={DPR_OPTIONS.POSITIVE_2}
             />
             <FormControlLabel
               value='option3'
               control={<Radio required />}
-              label={OPTIONS.OPTION_3}
+              label={DPR_OPTIONS.POSITIVE_3}
             />
             <FormLabel>Histórico familiar negativo:</FormLabel>
             <FormControlLabel
               value='option4'
               control={<Radio required />}
-              label={OPTIONS.OPTION_4}
+              label={DPR_OPTIONS.NEGATIVE_1}
             />
             <FormControlLabel
               value='option5'
               control={<Radio required />}
-              label={OPTIONS.OPTION_5}
+              label={DPR_OPTIONS.NEGATIVE_2}
             />
             <FormLabel>Sem histórico e sem a presença de cistos:</FormLabel>
             <FormControlLabel
               value='option6'
               control={<Radio required />}
-              label={OPTIONS.OPTION_NONE}
+              label={DPR_OPTIONS.OPTION_NONE}
             />
           </RadioGroup>
         </FormControl>

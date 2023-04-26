@@ -1,0 +1,22 @@
+.background {
+  background-color: aqua;
+}
+
+.header-title {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tooltip-content {
+  position: relative;
+}
+
+.tooltip-icon {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+}
+
+.tooltip-icon:hover {
+  cursor: pointer;
+}
