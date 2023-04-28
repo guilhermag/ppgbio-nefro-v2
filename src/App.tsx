@@ -98,7 +98,9 @@ function App() {
             </div>
           </form>
         </div>
-        <footer>teste</footer>
+        <footer className='center-content'>
+          <img src='src/shared/assets/apoio-utfpr.png' alt='utfpr' />
+        </footer>
       </div>
     </div>
   );

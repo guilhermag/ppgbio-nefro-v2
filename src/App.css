@@ -45,7 +45,5 @@ footer {
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
   padding: 0;
-  height: 80px;
-  border-top: 5px solid red;
-  background-color: aqua;
+  border-top: 0.5px solid black;
 }
