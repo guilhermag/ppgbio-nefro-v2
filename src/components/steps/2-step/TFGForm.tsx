@@ -17,6 +17,7 @@ import {
   TextField,
 } from '@mui/material';
 import { checkFormDataIsPopulated, getTFG } from '../../../shared/util/util';
+import './TFGForm.css';
 
 export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
   const [age, setAge] = useState('');
@@ -56,8 +57,10 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2>Calcular TFG</h2>
-      <p>Preencha todos os dados para calcular a TFG!</p>
+      <div className='header-form'>
+        <h2 className='step-title'>Calcular TFG</h2>
+        <p className='subtitle'>Preencha todos os dados para calcular a TFG!</p>
+      </div>
       <Box
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -96,7 +99,7 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
             onChange={handleChangeInput}
           />
         </div>
-        <div>
+        <div className='center-content'>
           <FormControl>
             <FormLabel id='demo-radio-buttons-group-label'>Gênero</FormLabel>
             <RadioGroup

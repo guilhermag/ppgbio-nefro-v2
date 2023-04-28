@@ -69,16 +69,16 @@ function App() {
             <div className='inputs-container'>{currentComponent.component}</div>
 
             <div className='actions center-content'>
-              {isFirstStep ? (
+              {!isLastStep ? (
                 <></>
               ) : (
-                <IconButton
-                  aria-label='refresh'
-                  color='primary'
+                <Button
+                  variant='outlined'
+                  startIcon={<RefreshIcon />}
                   onClick={(e) => changeStep(0)}
                 >
-                  <RefreshIcon />
-                </IconButton>
+                  Voltar
+                </Button>
               )}
 
               {isLastStep ? (
@@ -98,6 +98,7 @@ function App() {
             </div>
           </form>
         </div>
+        <footer>teste</footer>
       </div>
     </div>
   );

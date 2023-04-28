@@ -20,7 +20,7 @@ export const DiabetesForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2>Apresenta diabetes e macroalbuminuria ?</h2>
+      <h2 className='step-title'>Apresenta diabetes e macroalbuminuria ?</h2>
 
       <FormControl className='center-content'>
         <RadioGroup

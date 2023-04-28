@@ -35,7 +35,7 @@ export const MicroalbForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2>Aprensenta microalbuminuria ?</h2>
+      <h2 className='step-title'>Aprensenta microalbuminuria ?</h2>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
           <TableHead>

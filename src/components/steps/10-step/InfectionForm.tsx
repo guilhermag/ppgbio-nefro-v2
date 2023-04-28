@@ -82,8 +82,8 @@ export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
         </DialogActions>
       </Dialog>
 
-      <h2>Apresenta infecção recorrente ?</h2>
-      <p>
+      <h2 className='step-title'>Apresenta infecção recorrente ?</h2>
+      <p className='subtitle'>
         Selecione as opções que se encaixam com o paciente, se nenhuma se
         encaixar não selecione nada.
       </p>

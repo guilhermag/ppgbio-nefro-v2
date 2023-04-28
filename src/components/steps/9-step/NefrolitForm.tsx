@@ -23,9 +23,9 @@ export const NefrolitForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2>Apresenta nefrolitiase recorrente ?</h2>
-      <p>Sobre litíase renal considere: </p>
-      <div className='center-content left-content'>
+      <h2 className='step-title'>Apresenta nefrolitiase recorrente ?</h2>
+      <p className='subtitle'>Sobre litíase renal considere: </p>
+      <div className='left-content'>
         <FormControl>
           <RadioGroup name='history' onChange={handleChange}>
             <FormControlLabel

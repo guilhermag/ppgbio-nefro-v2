@@ -5,10 +5,9 @@ import { CheckerNextStep } from '../../../shared/interfaces/form';
 
 export const FinalNephroStep = ({ selectNextStep }: CheckerNextStep) => {
   return (
-    <div className='center-content'>
-      <h2>Encaminhar ao Nefrologista.</h2>
+    <div>
       <div className='high-risk'>
-        <h2>Risco Alto.</h2>
+        <h2 className='step-title'>Risco Alto.</h2>
         <ReportProblemIcon color='error' />
       </div>
     </div>

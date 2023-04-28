@@ -33,8 +33,8 @@ export const HypertensionForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2>Tem hipertensão ?</h2>
-      <p>
+      <h2 className='step-title'>Tem hipertensão ?</h2>
+      <p className='subtitle'>
         Selecione as opções que se encaixam com o paciente, se nenhuma se
         encaixar não selecione nada.
       </p>

@@ -24,8 +24,8 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2>Suspeita de doença policística renal ?</h2>
-      <p>
+      <h2 className='step-title'>Suspeita de doença policística renal ?</h2>
+      <p className='subtitle'>
         Selecione a situação que mais se adeque com o histórico do paciente:
       </p>
       <div className='center-content left-content'>

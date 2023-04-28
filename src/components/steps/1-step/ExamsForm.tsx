@@ -24,8 +24,8 @@ export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2>Exames</h2>
-      <p>
+      <h2 className='step-title'>Exames</h2>
+      <p className='subtitle'>
         Todos esses exames devem ser realizados e selecionados para prosseguir.
       </p>
       <FormControl>

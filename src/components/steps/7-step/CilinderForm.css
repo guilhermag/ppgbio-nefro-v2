@@ -20,3 +20,8 @@
 .tooltip-icon:hover {
   cursor: pointer;
 }
+
+.bg-card {
+  height: 300px;
+  justify-content: space-around;
+}

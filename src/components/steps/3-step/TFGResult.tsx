@@ -19,7 +19,7 @@ function createData(stage: string, tfg: string, renalInsufficiency: string) {
 }
 
 const rows = [
-  createData('0', '> 90', 'Grupos de Risco para DRC, Ausência de Lesão Renal'),
+  createData('0', '> 90', 'Ausência de Lesão Renal'),
   createData('1', '> 90', 'Lesão Renal com Função Renal Normal'),
   createData('2', '60 - 89', 'IR Leve ou Funcional'),
   createData('3', '30 - 59', 'IR Moderada ou Laboratorial'),
@@ -42,8 +42,8 @@ export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
   }, []);
 
   return (
-    <div>
-      <h2>Resultado Taxa de filtração glomerular</h2>
+    <div className='center-content'>
+      <h2 className='step-title'>Resultado Taxa de filtração glomerular</h2>
       <p>{tfgValue} ml/min/1,73m²</p>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>

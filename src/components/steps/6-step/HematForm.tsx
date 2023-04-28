@@ -34,8 +34,8 @@ export const HematForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2>Apresenta hematúria persistente ?</h2>
-      <p>
+      <h2 className='step-title'>Apresenta hematúria persistente ?</h2>
+      <p className='subtitle'>
         Selecione as opções que se encaixam com o paciente, se nenhuma se
         encaixar não selecione nada.
       </p>

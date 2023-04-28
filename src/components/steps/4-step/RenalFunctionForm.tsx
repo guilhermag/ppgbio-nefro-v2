@@ -20,8 +20,10 @@ export const RenalFunctionForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2>Apresenta perda rápida da função renal ?</h2>
-      <p>Maior que 5 ml/min/ 1,73 m², confirmado em dois exames.</p>
+      <h2 className='step-title'>Apresenta perda rápida da função renal ?</h2>
+      <p className='subtitle'>
+        Maior que 5 ml/min/ 1,73 m², confirmado em dois exames.
+      </p>
       <FormControl className='center-content'>
         <RadioGroup
           aria-labelledby='demo-radio-buttons-group-label'

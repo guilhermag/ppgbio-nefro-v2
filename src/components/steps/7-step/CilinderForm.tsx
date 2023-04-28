@@ -27,7 +27,7 @@ export const CilinderForm = ({ selectNextStep }: CheckerNextStep) => {
   };
 
   return (
-    <div className='center-content'>
+    <div className='center-content bg-card'>
       <h2 className='header-title'>
         Apresenta
         <div className='tooltip-content'>
