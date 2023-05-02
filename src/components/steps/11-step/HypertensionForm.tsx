@@ -25,9 +25,9 @@ export const HypertensionForm = ({ selectNextStep }: CheckerNextStep) => {
 
   useEffect(() => {
     if (counterSelected >= 2) {
-      selectNextStep(12);
+      selectNextStep(13);
     } else {
-      selectNextStep(11);
+      selectNextStep(12);
     }
   }, [counterSelected]);
 

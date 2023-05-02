@@ -33,11 +33,11 @@ export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
 
   useEffect(() => {
     if (tfgNumber > 60) {
-      selectNextStep(7);
+      selectNextStep(8);
     } else if (tfgNumber >= 30) {
-      selectNextStep(3);
+      selectNextStep(4);
     } else if (tfgNumber < 30) {
-      selectNextStep(12);
+      selectNextStep(13);
     }
   }, []);
 

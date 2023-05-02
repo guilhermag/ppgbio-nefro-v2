@@ -16,9 +16,9 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const optionSelected = event.target.value;
     if (optionSelected === 'option6') {
-      selectNextStep(8);
+      selectNextStep(9);
     } else {
-      selectNextStep(12);
+      selectNextStep(13);
     }
   };
 

@@ -51,14 +51,16 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
     if (dataCheck) {
       const tfg = getTFG(ethnicity, gender, creatinine, age);
       localStorage.setItem('tfgValue', tfg);
-      selectNextStep(2);
+      selectNextStep(3);
     }
   });
 
   return (
     <div className='center-content'>
       <div className='header-form'>
-        <h2 className='step-title'>Calcular TFG</h2>
+        <h2 className='step-title'>
+          Calculadora da Taxa de Filtração Glomerular(TFG)
+        </h2>
         <p className='subtitle'>Preencha todos os dados para calcular a TFG!</p>
       </div>
       <Box
@@ -75,7 +77,9 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
             type='number'
             required
             InputProps={{
-              endAdornment: <InputAdornment position='end'>kg</InputAdornment>,
+              endAdornment: (
+                <InputAdornment position='end'>anos</InputAdornment>
+              ),
             }}
             onChange={handleChangeInput}
           />

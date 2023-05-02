@@ -26,9 +26,9 @@ export const HematForm = ({ selectNextStep }: CheckerNextStep) => {
 
   useEffect(() => {
     if (counterSelected >= 1) {
-      selectNextStep(12);
+      selectNextStep(13);
     } else {
-      selectNextStep(6);
+      selectNextStep(7);
     }
   }, [counterSelected]);
 

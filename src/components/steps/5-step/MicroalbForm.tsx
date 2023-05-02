@@ -27,9 +27,9 @@ export const MicroalbForm = ({ selectNextStep }: CheckerNextStep) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(12);
+      selectNextStep(13);
     } else {
-      selectNextStep(5);
+      selectNextStep(6);
     }
   };
 

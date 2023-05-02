@@ -12,9 +12,9 @@ import {
 export const DiabetesForm = ({ selectNextStep }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(12);
-    } else {
       selectNextStep(13);
+    } else {
+      selectNextStep(14);
     }
   };
 

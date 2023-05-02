@@ -1,5 +1,6 @@
 import RefreshIcon from '@mui/icons-material/Refresh';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import footer from './shared/assets/apoio-utfpr.png';
 
 import './App.css';
 import { FormComponent } from './shared/interfaces/form';
@@ -22,6 +23,7 @@ import {
   FinalNephroStep,
   FinalStep,
 } from './components/steps/';
+import { InitialStep } from './components/steps/0-initial-step/InitialStep';
 
 function App() {
   const [nextStep, setNextStep] = useState(0);
@@ -32,6 +34,7 @@ function App() {
   };
 
   const components = [
+    <InitialStep selectNextStep={selectNextStep} />,
     <ExamsForm selectNextStep={selectNextStep} />,
     <TFGForm selectNextStep={selectNextStep} />,
     <TFGResult selectNextStep={selectNextStep} />,
@@ -59,6 +62,8 @@ function App() {
     event.preventDefault();
     changeStep(nextStep);
   };
+
+  const nextButton = currentStep === 0 ? 'Começar' : 'Avançar';
 
   return (
     <div className='screen-container'>
@@ -92,14 +97,14 @@ function App() {
                     setClick(click + 1);
                   }}
                 >
-                  Avançar
+                  {nextButton}
                 </Button>
               )}
             </div>
           </form>
         </div>
         <footer className='center-content'>
-          <img src='src/shared/assets/apoio-utfpr.png' alt='utfpr' />
+          <img src={footer} alt='utfpr-footer' />
         </footer>
       </div>
     </div>

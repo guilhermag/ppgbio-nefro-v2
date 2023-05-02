@@ -20,9 +20,9 @@ export const CilinderForm = ({ selectNextStep }: CheckerNextStep) => {
     'Céreos, largos, graxos, epiteliais, hemáticos ou leucocitários.';
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(12);
+      selectNextStep(13);
     } else {
-      selectNextStep(7);
+      selectNextStep(8);
     }
   };
 

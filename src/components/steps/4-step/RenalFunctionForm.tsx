@@ -12,9 +12,9 @@ import {
 export const RenalFunctionForm = ({ selectNextStep }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(12);
+      selectNextStep(13);
     } else {
-      selectNextStep(4);
+      selectNextStep(5);
     }
   };
 

@@ -6,7 +6,16 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import MedicationIcon from '@mui/icons-material/Medication';
+import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
@@ -19,29 +28,50 @@ export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
   ];
 
   const handleChange = () => {
-    selectNextStep(1);
+    selectNextStep(2);
   };
 
   return (
     <div>
       <h2 className='step-title'>Exames</h2>
       <p className='subtitle'>
-        Todos esses exames devem ser realizados e selecionados para prosseguir.
+        Atenção realize esses exames antes de realizar o encaminhamento para
+        Nefrologia.
       </p>
-      <FormControl>
-        <FormLabel component='legend'>Lista de exames realizados:</FormLabel>
-        <FormGroup>
-          {checkOptions.map((option, index) => (
-            <FormControlLabel
-              key={index}
-              control={
-                <Checkbox name={option.name} onChange={handleChange} required />
-              }
-              label={option.label}
-            />
-          ))}
-        </FormGroup>
-      </FormControl>
+      <List>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MedicalInformationIcon />
+            </ListItemIcon>
+            <ListItemText primary='Creatinina' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MedicationLiquidIcon />
+            </ListItemIcon>
+            <ListItemText primary='Urina I' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MedicationIcon />
+            </ListItemIcon>
+            <ListItemText primary='Microalbuminuria' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <LocalHospitalIcon />
+            </ListItemIcon>
+            <ListItemText primary='Ultrassom de aparelho urinário' />
+          </ListItemButton>
+        </ListItem>
+      </List>
     </div>
   );
 };

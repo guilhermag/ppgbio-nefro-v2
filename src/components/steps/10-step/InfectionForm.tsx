@@ -44,9 +44,9 @@ export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
 
   useEffect(() => {
     if (counterSelected >= 3) {
-      selectNextStep(12);
+      selectNextStep(13);
     } else {
-      selectNextStep(10);
+      selectNextStep(11);
     }
   }, [counterSelected]);
 

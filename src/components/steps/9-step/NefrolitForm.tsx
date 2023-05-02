@@ -15,9 +15,9 @@ export const NefrolitForm = ({ selectNextStep }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const optionSelected = event.target.value;
     if (optionSelected === 'option3') {
-      selectNextStep(9);
+      selectNextStep(10);
     } else {
-      selectNextStep(12);
+      selectNextStep(13);
     }
   };
 
