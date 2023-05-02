@@ -2,6 +2,7 @@
 
 import {
   Checkbox,
+  Collapse,
   FormControl,
   FormControlLabel,
   FormGroup,
@@ -18,18 +19,34 @@ import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { EXAMS_DETAILS } from '../../../shared/constants/exams';
 
 export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
-  const checkOptions = [
-    { name: 'creatine', label: 'Creatinina.' },
-    { name: 'urine', label: 'Urina I.' },
-    { name: 'microalb', label: 'Microalbuminuria.' },
-    { name: 'ultrasound', label: 'Ultrassom de aparelho urinário.' },
-  ];
+  const [openCreatinine, setOpenCreatinine] = useState(false);
+  const [openUrine, setOpenUrine] = useState(false);
+  const [openMicroalb, setOpenMicroalb] = useState(false);
+  const [openUltrasound, setOpenUltrasound] = useState(false);
 
-  const handleChange = () => {
-    selectNextStep(2);
+  const handleClickCreatinine = () => {
+    setOpenCreatinine(!openCreatinine);
   };
+
+  const handleClickUrine = () => {
+    setOpenUrine(!openUrine);
+  };
+
+  const handleClickMicroalb = () => {
+    setOpenMicroalb(!openMicroalb);
+  };
+
+  const handleClickUltrasound = () => {
+    setOpenUltrasound(!openUltrasound);
+  };
+
+  useEffect(() => {
+    selectNextStep(2);
+  });
 
   return (
     <div>
@@ -39,38 +56,62 @@ export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
         Nefrologia.
       </p>
       <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <MedicalInformationIcon />
-            </ListItemIcon>
-            <ListItemText primary='Creatinina' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <MedicationLiquidIcon />
-            </ListItemIcon>
-            <ListItemText primary='Urina I' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <MedicationIcon />
-            </ListItemIcon>
-            <ListItemText primary='Microalbuminuria' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalHospitalIcon />
-            </ListItemIcon>
-            <ListItemText primary='Ultrassom de aparelho urinário' />
-          </ListItemButton>
-        </ListItem>
+        <ListItemButton onClick={handleClickCreatinine}>
+          <ListItemIcon>
+            <MedicalInformationIcon />
+          </ListItemIcon>
+          <ListItemText primary={EXAMS_DETAILS.CREATININE.LABEL} />
+          {openCreatinine ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openCreatinine} timeout='auto' unmountOnExit>
+          <List component='div' disablePadding>
+            <ListItemButton sx={{ pl: 4, maxWidth: 600 }}>
+              <ListItemText primary={EXAMS_DETAILS.CREATININE.DETAIL} />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItemButton onClick={handleClickUrine}>
+          <ListItemIcon>
+            <MedicalInformationIcon />
+          </ListItemIcon>
+          <ListItemText primary={EXAMS_DETAILS.URINE.LABEL} />
+          {openUrine ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openUrine} timeout='auto' unmountOnExit>
+          <List component='div' disablePadding>
+            <ListItemButton sx={{ pl: 4, maxWidth: 600 }}>
+              <ListItemText primary={EXAMS_DETAILS.URINE.DETAIL} />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItemButton onClick={handleClickMicroalb}>
+          <ListItemIcon>
+            <MedicalInformationIcon />
+          </ListItemIcon>
+          <ListItemText primary={EXAMS_DETAILS.MICROALB.LABEL} />
+          {openMicroalb ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openMicroalb} timeout='auto' unmountOnExit>
+          <List component='div' disablePadding>
+            <ListItemButton sx={{ pl: 4, maxWidth: 600 }}>
+              <ListItemText primary={EXAMS_DETAILS.MICROALB.DETAIL} />
+            </ListItemButton>
+          </List>
+        </Collapse>
+        <ListItemButton onClick={handleClickUltrasound}>
+          <ListItemIcon>
+            <MedicalInformationIcon />
+          </ListItemIcon>
+          <ListItemText primary={EXAMS_DETAILS.ULTRASOUND.LABEL} />
+          {openUltrasound ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={openUltrasound} timeout='auto' unmountOnExit>
+          <List component='div' disablePadding>
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemText primary={EXAMS_DETAILS.ULTRASOUND.DETAIL} />
+            </ListItemButton>
+          </List>
+        </Collapse>
       </List>
     </div>
   );
