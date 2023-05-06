@@ -9,8 +9,8 @@
 .app-container {
   background-color: #fff;
   border-radius: 1rem;
-  min-width: 600px;
-  min-height: 300px;
+  width: 600px;
+  min-height: 400px;
   filter: drop-shadow(5px 5px 7px #000);
 }
 
@@ -27,11 +27,13 @@
 
 .step-title {
   text-align: center;
-  padding-bottom: 1rem;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: normal;
 }
 
 .subtitle {
-  font-size: 1.3rem;
+  font-size: 18px;
   padding: 0.5rem 0.5rem 0.5rem 0;
 }
 

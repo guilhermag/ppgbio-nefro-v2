@@ -46,7 +46,7 @@ export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
       <h2 className='step-title'>Resultado Taxa de filtração glomerular</h2>
       <p>{tfgValue} ml/min/1,73m²</p>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+        <Table sx={{ minWidth: 500 }} aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell>Estágio</TableCell>

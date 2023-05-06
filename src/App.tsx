@@ -64,6 +64,7 @@ function App() {
   };
 
   const nextButton = currentStep === 0 ? 'Começar' : 'Avançar';
+  const classInitial = currentStep === 0 ? '' : 'center-content';
 
   return (
     <div className='screen-container'>
@@ -73,7 +74,7 @@ function App() {
           <form onSubmit={handleSubmit}>
             <div className='inputs-container'>{currentComponent.component}</div>
 
-            <div className='actions center-content'>
+            <div className={`actions ${classInitial}`}>
               {!isLastStep ? (
                 <></>
               ) : (

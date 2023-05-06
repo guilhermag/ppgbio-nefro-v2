@@ -1,15 +1,8 @@
 // Step 1
-
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
-} from '@mui/material';
-
+import './InitialStep.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import { useEffect } from 'react';
+import initialImage from '../../../shared/assets/initial-img.jpeg';
 
 export const InitialStep = ({ selectNextStep }: CheckerNextStep) => {
   useEffect(() => {
@@ -17,12 +10,23 @@ export const InitialStep = ({ selectNextStep }: CheckerNextStep) => {
   });
   return (
     <>
-      <h2 className='step-title'>
+      <h2 className='initial'>
         Calculadora para triagem de paciente com doença renal crônica
       </h2>
-      <p className='subtitle'>
-        NefroCheck, a sua fonte rápida para encaminhamento nefrologico.
-      </p>
+      <div className='step-content'>
+        <p className='subtitle-initial'>
+          NefroCheck, a sua fonte rápida para encaminhamento nefrologico.
+        </p>
+        <img src={initialImage} alt='initial-image' className='initial-image' />
+      </div>
+      <div className='names'>
+        <ul className='list'>
+          <li>Consultores</li>
+          <li>Nome 1</li>
+          <li>Nome 2</li>
+          <li>Nome 3</li>
+        </ul>
+      </div>
     </>
   );
 };

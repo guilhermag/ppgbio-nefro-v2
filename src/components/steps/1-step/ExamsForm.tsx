@@ -14,9 +14,6 @@ import {
   ListItemText,
 } from '@mui/material';
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
-import MedicationIcon from '@mui/icons-material/Medication';
-import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';

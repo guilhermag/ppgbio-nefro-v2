@@ -4,3 +4,11 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.high-risk h2 {
+  margin-bottom: 0;
+}
+
+.risk-image {
+  width: 70%;
+}
