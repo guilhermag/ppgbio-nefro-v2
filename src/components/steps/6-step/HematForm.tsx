@@ -10,6 +10,8 @@ import {
   FormLabel,
 } from '@mui/material';
 import { HEMAT_OPTIONS } from '../../../shared/constants/questions';
+import hematImage from '../../../shared/assets/hemat.png';
+import './HematForm.css';
 
 export const HematForm = ({ selectNextStep }: CheckerNextStep) => {
   const [counterSelected, setCounterSelected] = useState(0);
@@ -39,6 +41,7 @@ export const HematForm = ({ selectNextStep }: CheckerNextStep) => {
         Selecione as opções que se encaixam com o paciente, se nenhuma se
         encaixar não selecione nada.
       </p>
+      <img src={hematImage} alt='hemat-image' className='hemat-image' />
       <FormControl>
         <FormGroup>
           {checkOptions.map((option, index) => (

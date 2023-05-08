@@ -22,9 +22,9 @@ export const InitialStep = ({ selectNextStep }: CheckerNextStep) => {
       <div className='names'>
         <ul className='list'>
           <li>Consultores</li>
-          <li>Nome 1</li>
-          <li>Nome 2</li>
-          <li>Nome 3</li>
+          <li>Karina Litchteneker</li>
+          <li>Guilherme de Araujo Gabriel</li>
+          <li>Jefferson Gustavo Martins</li>
         </ul>
       </div>
     </>

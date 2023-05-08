@@ -60,3 +60,33 @@ export const HYPERTENSION_OPTIONS = [
       'Falta de controle da pressão com no mínimo três medicações anti-hipertensivas em dose plena, após avaliação da adesão.',
   },
 ];
+
+export const HYPERTENSION_TABLE = {
+  TITLE: 'Causas de Hipertensão Secundaria',
+  STEP_1: {
+    TITLE: '1. Feocromocitoma',
+    OPTION_1:
+      '- Tumor secretor de hormônio, podem ocorrer nas glândulas adernais.',
+  },
+  STEP_2: {
+    TITLE: '2. Tireoidopatia',
+    OPTION_1: '- Hipotireoidismo.',
+    OPTION_2: '- Hipertireoidismo.',
+  },
+  STEP_3: {
+    TITLE: '3. Apnéia obstrutiva do sono',
+    OPTION_1:
+      '- Apneia obstrutiva do sono/ múltiplos episódios de fechamento completo.',
+    OPTION_2:
+      '- Fechamento parcial das vias respiratórias superiores durante o sono',
+  },
+  STEP_4: {
+    TITLE: '4. Hipertensão renovascular',
+    OPTION_1:
+      '- É a elevação da pressão arterial decorrente da oclusão parcial ou total de uma ou mais artérias renais e seus Ramos.',
+  },
+  STEP_5: {
+    TITLE: '5. Aldosteronismo primario',
+    OPTION_1: '- Produção autônoma de aldosterona pelo córtex adrenal.',
+  },
+};
