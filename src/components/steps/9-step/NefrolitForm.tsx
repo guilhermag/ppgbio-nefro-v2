@@ -1,5 +1,3 @@
-// Step 9
-
 import React from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
