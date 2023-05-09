@@ -3,7 +3,7 @@ import { FormComponent } from '../shared/interfaces/form';
 
 export function useForm(steps: FormComponent[]) {
   const [currentStep, setCurrentStep] = useState(0);
-  const isLastStep = currentStep + 1 >= 13 ? true : false;
+  const isLastStep = currentStep + 1 >= 14 ? true : false;
   const isFirstStep = currentStep === 0 ? true : false;
 
   function changeStep(index: number) {

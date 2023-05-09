@@ -15,14 +15,22 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
+  Grid,
 } from '@mui/material';
 import { Transition } from '../../../shared/elements/Transition';
 import {
   INFECTION_OPTIONS,
   PROPHYLAXIS_TABLE,
 } from '../../../shared/constants/questions';
+import { conditionsInfection } from '../../../shared/assets/infection';
 
 export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
+  const formControlLabelStyle = {
+    '& .MuiFormControlLabel-label': {
+      fontSize: '15px',
+    },
+  };
+
   const [counterSelected, setCounterSelected] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -87,6 +95,24 @@ export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
         Selecione as opções que se encaixam com o paciente, se nenhuma se
         encaixar não selecione nada.
       </p>
+
+      <Grid container spacing={2} className='conditions'>
+        {conditionsInfection.map((image, index) => {
+          return (
+            <Grid item xs={3} key={index}>
+              <div className='center-content condition-container'>
+                <img
+                  src={image.source}
+                  alt={image.label}
+                  className='image-condition'
+                />
+                <span className='image-label'>{image.label}</span>
+              </div>
+            </Grid>
+          );
+        })}
+      </Grid>
+
       <Button
         color='info'
         startIcon={<PriorityHighIcon fontSize='large' />}
@@ -94,20 +120,24 @@ export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
       >
         Indicações para profilaxia em mulheres.
       </Button>
+
       <div>
         <FormControl>
           <FormGroup>
             <FormControlLabel
               control={<Checkbox name='name1' onChange={handleChange} />}
               label={INFECTION_OPTIONS.OPTION_1}
+              sx={{ ...formControlLabelStyle }}
             />
             <FormControlLabel
               control={<Checkbox name='name1' onChange={handleChange} />}
               label={INFECTION_OPTIONS.OPTION_2}
+              sx={{ ...formControlLabelStyle }}
             />
             <FormControlLabel
               control={<Checkbox name='name1' onChange={handleChange} />}
               label={INFECTION_OPTIONS.OPTION_3}
+              sx={{ ...formControlLabelStyle }}
             />
           </FormGroup>
         </FormControl>

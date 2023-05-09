@@ -20,3 +20,21 @@
   display: flex;
   flex-direction: column;
 }
+
+.conditions {
+  margin: 20px 0;
+}
+
+.image-condition {
+  width: 60px;
+  height: 60px;
+}
+
+.condition-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.image-label {
+  font-size: 13px;
+}
