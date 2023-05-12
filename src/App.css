@@ -1,9 +1,9 @@
 .screen-container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: #bddaf6;
 }
@@ -11,6 +11,7 @@
 .app-container {
   background-color: #fff;
   border-radius: 1rem;
+  margin-top: 40px;
   width: 600px;
   min-height: 400px;
   filter: drop-shadow(5px 5px 7px #000);
@@ -57,10 +58,17 @@ footer img {
 }
 
 .disclaimer {
-  width: 80%;
+  background-color: rgb(175, 173, 173);
+  margin-top: auto;
+  width: 100%;
   font-weight: 500;
 }
 
 .disclaimer h3 {
+  font-size: 15px;
   font-weight: 800;
+}
+
+.disclaimer p {
+  font-size: 14px;
 }

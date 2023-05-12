@@ -76,7 +76,12 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
             name='age'
             type='number'
             required
+            helperText='Valor numérico de 1 a 100; Ex: 30'
             InputProps={{
+              inputProps: {
+                max: 100,
+                min: 1,
+              },
               endAdornment: (
                 <InputAdornment position='end'>anos</InputAdornment>
               ),
@@ -91,11 +96,14 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
             label='Creatinina'
             name='creatinine'
             type='number'
-            inputProps={{
-              step: 0.01,
-            }}
             required
+            helperText='Ex: 0.80'
             InputProps={{
+              inputProps: {
+                max: 3.0,
+                min: 0.0,
+                step: 0.01,
+              },
               endAdornment: (
                 <InputAdornment position='end'>mg/dL</InputAdornment>
               ),

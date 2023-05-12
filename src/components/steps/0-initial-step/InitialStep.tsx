@@ -14,14 +14,10 @@ export const InitialStep = ({ selectNextStep }: CheckerNextStep) => {
         Calculadora para triagem de paciente com doença renal crônica
       </h2>
       <div className='step-content'>
-        <div className='subtitle-initial'>
-          <p className='subtitle-initial'>
-            NefroCheck, a sua fonte rápida de auxílio para encaminhamento
-            nefrologico.
-          </p>
-        </div>
-
-        <img src={initialImage} alt='initial-image' className='initial-image' />
+        <p className='subtitle-initial'>
+          NefroCheck, a sua fonte rápida de auxílio para encaminhamento
+          nefrologico.
+        </p>
       </div>
       <div className='last-container'>
         <div className='names'>
@@ -32,6 +28,7 @@ export const InitialStep = ({ selectNextStep }: CheckerNextStep) => {
             <li>Jefferson Gustavo Martins</li>
           </ul>
         </div>
+        <img src={initialImage} alt='initial-image' className='initial-image' />
       </div>
     </>
   );
