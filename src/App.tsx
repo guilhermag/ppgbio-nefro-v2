@@ -109,17 +109,24 @@ function App() {
         </footer>
       </div>
       <div className='disclaimer center-content'>
-        <h3>Avisos legais e isenção de responsabilidades</h3>
-        <p>
-          Todas as informações contidas aqui e produzidas pelo sistema
-          NefroCheck são fornecidas apenas com propósitos educacionais.
-        </p>
-        Estas informações não devem ser usadas para diagnóstico ou tratamento de
-        quaisquer problemas de saúde ou doenças.
-        <p>
-          ESTAS INFORMAÇÕES NÃO DEVEM SUBSTITUIR O JULGAMENTO CLÍNICO OU
-          ORIENTAR DE ALGUMA FORMA O TRATAMENTO INDIVIDUAL DOS PACIENTES.
-        </p>
+        <div className=''>
+          <h3>Avisos legais e isenção de responsabilidades</h3>
+          <p>
+            Todas as informações contidas aqui e produzidas pelo sistema
+            NefroCheck são fornecidas{' '}
+            <span className='not'>apenas com propósitos educacionais</span>.
+          </p>
+          <p>
+            Estas informações <span className='not'>não devem ser usadas</span>{' '}
+            para diagnóstico ou tratamento de quaisquer problemas de saúde ou
+            doenças.
+          </p>
+          <p>
+            ESTAS INFORMAÇÕES <span className='not'>NÃO DEVEM SUBSTITUIR</span>{' '}
+            O JULGAMENTO CLÍNICO OU ORIENTAR DE ALGUMA FORMA O TRATAMENTO
+            INDIVIDUAL DOS PACIENTES.
+          </p>
+        </div>
       </div>
     </div>
   );
