@@ -16,6 +16,7 @@ export const EXAMS_DETAILS = {
   },
   ULTRASOUND: {
     LABEL: 'Ultrassom de aparelho urinário',
-    DETAIL: '',
+    DETAIL:
+      'É necessário estar de bexiga cheia, tomar de 2 a 5 copos de água 2 horas antes do exame.',
   },
 };

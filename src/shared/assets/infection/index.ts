@@ -9,7 +9,7 @@ import condition08 from './condition08.jpeg';
 
 export const conditionsInfection = [
   {
-    label: 'Urina escura e acinzentada.',
+    label: 'Urina escura.',
     source: condition01,
   },
   {

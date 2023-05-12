@@ -42,7 +42,15 @@ export function getTFG(
 export function selectStageByTFG(tfgValue: string, stage: string): string {
   const tfgNumber = Number(tfgValue);
   if (stage === '1') stage = '0';
-  return getTFGStage(tfgNumber) === stage ? 'selected-row' : '';
+  if (getTFGStage(tfgNumber) === stage) {
+    if (stage === '3' || stage === '4' || stage === '5') {
+      return 'high-risk-row';
+    } else {
+      return 'selected-row';
+    }
+  } else {
+    return '';
+  }
 }
 
 function getTFGStage(tfgNumber: number) {

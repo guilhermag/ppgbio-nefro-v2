@@ -1,5 +1,3 @@
-// Step 3
-
 import React, { useEffect } from 'react';
 import './TFGResult.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
@@ -44,7 +42,10 @@ export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
   return (
     <div className='center-content'>
       <h2 className='step-title'>Resultado Taxa de filtração glomerular</h2>
-      <p>{tfgValue} ml/min/1,73m²</p>
+      <p className='tfg-result'>
+        TFG = {tfgValue} ml/min/1,73m²{' '}
+        <span className='ckd-epi'>[ckd-epi]</span>
+      </p>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 500 }} aria-label='simple table'>
           <TableHead>
@@ -74,5 +75,3 @@ export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
     </div>
   );
 };
-
-const setNextStep = (tfgValue: string) => {};

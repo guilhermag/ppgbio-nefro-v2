@@ -3,14 +3,7 @@ import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import './FinalNephroStep.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import highRisk from '../../../shared/assets/high-risk.png';
-import {
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { Collapse, List, ListItemButton, ListItemText } from '@mui/material';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 export const FinalNephroStep = ({ selectNextStep }: CheckerNextStep) => {
@@ -33,6 +26,7 @@ export const FinalNephroStep = ({ selectNextStep }: CheckerNextStep) => {
         <p className='subtitle'>
           Risco alto de evoluir para terapia renal substitutiva.
         </p>
+        <p className='subtitle'>Encaminhar para serviço de nefrologia.</p>
 
         <img src={highRisk} alt='high-risk' className='risk-image' />
       </div>

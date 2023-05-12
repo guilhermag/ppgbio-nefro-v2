@@ -82,7 +82,6 @@ export const HypertensionForm = ({ selectNextStep }: CheckerNextStep) => {
               <span className='item final-item'>
                 <span>{HYPERTENSION_TABLE.STEP_3.TITLE}</span>
                 <span>{HYPERTENSION_TABLE.STEP_3.OPTION_1}</span>
-                <span>{HYPERTENSION_TABLE.STEP_3.OPTION_2}</span>
               </span>
               <span className='item middle-item'>
                 <span>{HYPERTENSION_TABLE.STEP_4.TITLE}</span>

@@ -46,3 +46,17 @@
 .names li {
   font-size: 14px;
 }
+
+.last-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.important-message {
+  width: 60%;
+  font-size: 17px;
+  font-weight: 700;
+  font-style: italic;
+  color: orangered;
+}

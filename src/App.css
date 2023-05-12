@@ -1,6 +1,8 @@
 .screen-container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 30px;
   justify-content: center;
   align-items: center;
   background-color: #bddaf6;
@@ -52,4 +54,13 @@ footer {
 
 footer img {
   height: 150px;
+}
+
+.disclaimer {
+  width: 80%;
+  font-weight: 500;
+}
+
+.disclaimer h3 {
+  font-weight: 800;
 }

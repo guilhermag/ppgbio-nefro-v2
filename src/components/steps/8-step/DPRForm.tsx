@@ -30,7 +30,7 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
       </p>
       <div className='center-content left-content'>
         <FormControl>
-          <FormLabel>Histórico familiar positivo</FormLabel>
+          <FormLabel focused>Histórico familiar positivo</FormLabel>
           <RadioGroup name='history' onChange={handleChange}>
             <FormControlLabel
               value='option1'
@@ -48,7 +48,7 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
               control={<Radio required />}
               label={DPR_OPTIONS.POSITIVE_3}
             />
-            <FormLabel>Histórico familiar negativo:</FormLabel>
+            <FormLabel focused>Histórico familiar negativo:</FormLabel>
             <FormControlLabel
               value='option4'
               control={<Radio required />}
@@ -59,7 +59,9 @@ export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
               control={<Radio required />}
               label={DPR_OPTIONS.NEGATIVE_2}
             />
-            <FormLabel>Sem histórico e sem a presença de cistos:</FormLabel>
+            <FormLabel focused>
+              Sem histórico e sem a presença de cistos:
+            </FormLabel>
             <FormControlLabel
               value='option6'
               control={<Radio required />}

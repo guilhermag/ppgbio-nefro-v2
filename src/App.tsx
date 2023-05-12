@@ -108,6 +108,19 @@ function App() {
           <img src={footer} alt='utfpr-footer' />
         </footer>
       </div>
+      <div className='disclaimer center-content'>
+        <h3>Avisos legais e isenção de responsabilidades</h3>
+        <p>
+          Todas as informações contidas aqui e produzidas pelo sistema
+          NefroCheck são fornecidas apenas com propósitos educacionais.
+        </p>
+        Estas informações não devem ser usadas para diagnóstico ou tratamento de
+        quaisquer problemas de saúde ou doenças.
+        <p>
+          ESTAS INFORMAÇÕES NÃO DEVEM SUBSTITUIR O JULGAMENTO CLÍNICO OU
+          ORIENTAR DE ALGUMA FORMA O TRATAMENTO INDIVIDUAL DOS PACIENTES.
+        </p>
+      </div>
     </div>
   );
 }

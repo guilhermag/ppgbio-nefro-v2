@@ -50,7 +50,7 @@ export const DiabetesForm = ({ selectNextStep }: CheckerNextStep) => {
           name='answer'
           row
           onChange={handleChange}
-          className='radio-test'
+          className='radio-space-around'
         >
           <FormControlLabel
             value='yes'

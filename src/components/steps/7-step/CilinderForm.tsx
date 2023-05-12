@@ -7,12 +7,10 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
-  Tooltip,
 } from '@mui/material';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import './CilinderForm.css';
 import { QuestionMarkTooltip } from '../../../shared/elements/QuestionMarkTooltip';
-import { red } from '@mui/material/colors';
+import cilinder from '../../../shared/assets/cilinder.jpeg';
 
 export const CilinderForm = ({ selectNextStep }: CheckerNextStep) => {
   const tooltipText = ' cilindros ';
@@ -28,20 +26,16 @@ export const CilinderForm = ({ selectNextStep }: CheckerNextStep) => {
 
   return (
     <div className='center-content bg-card'>
-      <h2 className='header-title'>
+      <h2 className='header-title'>Cilindros</h2>
+      <p className='subtitle subtitle-content'>
         Apresenta
-        <div className='tooltip-content'>
-          {tooltipText}
-          <QuestionMarkTooltip title={toolTipinfo} placement='top-start'>
-            <QuestionMarkIcon
-              sx={{ color: red[500] }}
-              className='tooltip-icon'
-              fontSize='small'
-            />
-          </QuestionMarkTooltip>
-        </div>
+        <QuestionMarkTooltip title={toolTipinfo} placement='top-start'>
+          <span className='tooltip-content'>{tooltipText}</span>
+        </QuestionMarkTooltip>
         com potencial patológico?
-      </h2>
+      </p>
+
+      <img src={cilinder} alt='cilinder image' className='cilinder-image' />
 
       <FormControl>
         <RadioGroup
@@ -49,6 +43,7 @@ export const CilinderForm = ({ selectNextStep }: CheckerNextStep) => {
           name='answer'
           row
           onChange={handleChange}
+          className='radio-space-around'
         >
           <FormControlLabel
             value='yes'

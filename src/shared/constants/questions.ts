@@ -22,9 +22,9 @@ export const DPR_OPTIONS = {
 };
 
 export const NEFROLIT_OPTIONS = {
-  IDENTIFIED: 'Identificou, mas não conseguiu tratar.',
-  NOT_IDENTIFIED: 'Não conseguiu identificar.',
-  TREATED: 'Identificou e tratou.',
+  IDENTIFIED: 'Identificou causa metabólica, mas não conseguiu tratar.',
+  NOT_IDENTIFIED: 'Não conseguiu identificar a causa metabólica.',
+  TREATED: 'Identificou e tratou a causa metabólica.',
 };
 
 export const INFECTION_OPTIONS = {
@@ -66,7 +66,7 @@ export const HYPERTENSION_TABLE = {
   STEP_1: {
     TITLE: '1. Feocromocitoma',
     OPTION_1:
-      '- Tumor secretor de hormônio, podem ocorrer nas glândulas adernais.',
+      '- Tumor secretor de hormônio, podem ocorrer nas glândulas adrenais.',
   },
   STEP_2: {
     TITLE: '2. Tireoidopatia',
@@ -76,9 +76,7 @@ export const HYPERTENSION_TABLE = {
   STEP_3: {
     TITLE: '3. Apnéia obstrutiva do sono',
     OPTION_1:
-      '- Apneia obstrutiva do sono/ múltiplos episódios de fechamento completo.',
-    OPTION_2:
-      '- Fechamento parcial das vias respiratórias superiores durante o sono',
+      '- Apneia obstrutiva do sono/ múltiplos episódios de fechamento completo ou parcial das vias respiratórias superiores durante o sono.',
   },
   STEP_4: {
     TITLE: '4. Hipertensão renovascular',

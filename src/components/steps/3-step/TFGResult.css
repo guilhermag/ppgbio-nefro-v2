@@ -1,3 +1,15 @@
 .selected-row {
   background-color: rgba(47, 103, 224, 0.541);
 }
+
+.high-risk-row {
+  background-color: rgba(224, 47, 47, 0.541);
+}
+.tfg-result {
+  font-size: 19px;
+}
+
+.ckd-epi {
+  font-size: 15px;
+  font-weight: 800;
+}

@@ -2,3 +2,7 @@
   align-items: flex-start;
   gap: 1rem;
 }
+
+.blue-label {
+  color: aqua;
+}
