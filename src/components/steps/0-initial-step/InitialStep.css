@@ -4,6 +4,21 @@
   font-weight: normal;
 }
 
+.initial-content {
+  display: flex;
+}
+
+.references {
+  width: 400px;
+  margin-top: 20px;
+}
+
+.reference-item {
+  width: 80%;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
 .subtitle-initial {
   font-size: 18px;
   margin-top: 20px;
@@ -16,7 +31,7 @@
 }
 
 .initial-image {
-  width: 50%;
+  width: 200px;
 }
 
 .list::before {
@@ -30,7 +45,7 @@
   position: absolute;
 }
 .names {
-  margin: 30px 0;
+  margin-bottom: 10px;
   padding-left: 20px;
 }
 .names ul {
