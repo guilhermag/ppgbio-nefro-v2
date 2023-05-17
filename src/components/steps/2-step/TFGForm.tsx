@@ -19,7 +19,7 @@ import {
 import { checkFormDataIsPopulated, getTFG } from '../../../shared/util/util';
 import './TFGForm.css';
 
-export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
+export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
   const [age, setAge] = useState('');
   const [creatinine, setCreatinine] = useState('');
   const [gender, setGender] = useState('');
@@ -51,7 +51,9 @@ export const TFGForm = ({ selectNextStep }: CheckerNextStep) => {
     if (dataCheck) {
       const tfg = getTFG(ethnicity, gender, creatinine, age);
       localStorage.setItem('tfgValue', tfg);
-      selectNextStep(3);
+      selectSteps(3, 1);
+    } else {
+      selectSteps(2, 1);
     }
   });
 

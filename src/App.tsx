@@ -28,27 +28,33 @@ import { InitialStep } from './components/steps/0-initial-step/InitialStep';
 function App() {
   const [nextStep, setNextStep] = useState(0);
   const [click, setClick] = useState(0);
+  const [previousStep, setPreviousStep] = useState(0);
 
-  const selectNextStep = (nextStep: number) => {
+  const selectSteps = (nextStep: number, previousStep: number) => {
     setNextStep(nextStep);
+    setPreviousStep(previousStep);
   };
 
+  useEffect(() => {
+    console.log(currentStep);
+  });
+
   const components = [
-    <InitialStep selectNextStep={selectNextStep} />,
-    <ExamsForm selectNextStep={selectNextStep} />,
-    <TFGForm selectNextStep={selectNextStep} />,
-    <TFGResult selectNextStep={selectNextStep} />,
-    <RenalFunctionForm selectNextStep={selectNextStep} />,
-    <MicroalbForm selectNextStep={selectNextStep} />,
-    <HematForm selectNextStep={selectNextStep} />,
-    <CilinderForm selectNextStep={selectNextStep} />,
-    <DPRForm selectNextStep={selectNextStep} />,
-    <NefrolitForm selectNextStep={selectNextStep} />,
-    <InfectionForm selectNextStep={selectNextStep} />,
-    <HypertensionForm selectNextStep={selectNextStep} />,
-    <DiabetesForm selectNextStep={selectNextStep} />,
-    <FinalNephroStep selectNextStep={selectNextStep} />,
-    <FinalStep selectNextStep={selectNextStep} />,
+    <InitialStep selectSteps={selectSteps} />,
+    <ExamsForm selectSteps={selectSteps} />,
+    <TFGForm selectSteps={selectSteps} />,
+    <TFGResult selectSteps={selectSteps} />,
+    <RenalFunctionForm selectSteps={selectSteps} />,
+    <MicroalbForm selectSteps={selectSteps} />,
+    <HematForm selectSteps={selectSteps} />,
+    <CilinderForm selectSteps={selectSteps} />,
+    <DPRForm selectSteps={selectSteps} />,
+    <NefrolitForm selectSteps={selectSteps} />,
+    <InfectionForm selectSteps={selectSteps} />,
+    <HypertensionForm selectSteps={selectSteps} />,
+    <DiabetesForm selectSteps={selectSteps} />,
+    <FinalNephroStep selectSteps={selectSteps} />,
+    <FinalStep selectSteps={selectSteps} />,
   ];
 
   const formComponents: FormComponent[] = components.map((component) => ({
@@ -75,13 +81,13 @@ function App() {
             <div className='inputs-container'>{currentComponent.component}</div>
 
             <div className={`actions ${classInitial}`}>
-              {!isLastStep ? (
+              {isFirstStep ? (
                 <></>
               ) : (
                 <Button
                   variant='outlined'
                   startIcon={<RefreshIcon />}
-                  onClick={(e) => changeStep(0)}
+                  onClick={(e) => changeStep(previousStep)}
                 >
                   Voltar
                 </Button>
@@ -90,16 +96,18 @@ function App() {
               {isLastStep ? (
                 <></>
               ) : (
-                <Button
-                  variant='outlined'
-                  endIcon={<NavigateNextIcon />}
-                  type='submit'
-                  onClick={() => {
-                    setClick(click + 1);
-                  }}
-                >
-                  {nextButton}
-                </Button>
+                <div>
+                  <Button
+                    variant='outlined'
+                    endIcon={<NavigateNextIcon />}
+                    type='submit'
+                    onClick={() => {
+                      setClick(click + 1);
+                    }}
+                  >
+                    {nextButton}
+                  </Button>
+                </div>
               )}
             </div>
           </form>

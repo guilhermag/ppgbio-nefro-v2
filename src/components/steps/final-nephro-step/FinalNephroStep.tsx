@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import './FinalNephroStep.css';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
@@ -6,8 +6,12 @@ import highRisk from '../../../shared/assets/high-risk.png';
 import { Collapse, List, ListItemButton, ListItemText } from '@mui/material';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
-export const FinalNephroStep = ({ selectNextStep }: CheckerNextStep) => {
+export const FinalNephroStep = ({ selectSteps }: CheckerNextStep) => {
   const [open, setOpen] = useState(false);
+  const previousStep = Number(localStorage.getItem('previousStep'));
+  useEffect(() => {
+    selectSteps(13, previousStep);
+  });
 
   const handleClick = () => {
     setOpen(!open);

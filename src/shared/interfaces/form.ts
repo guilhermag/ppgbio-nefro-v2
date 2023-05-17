@@ -3,7 +3,7 @@ export interface FormComponent {
 }
 
 export interface CheckerNextStep {
-  selectNextStep: (nextStep: number) => void;
+  selectSteps: (nextStep: number, previousStep: number) => void;
 }
 
 export interface FormData {

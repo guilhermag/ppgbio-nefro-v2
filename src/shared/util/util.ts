@@ -38,11 +38,9 @@ export function getTFG(
   return (finalMultiplier * minValue * maxValue * ageValue).toFixed(2);
 }
 
-//
-export function selectStageByTFG(tfgValue: string, stage: string): string {
-  const tfgNumber = Number(tfgValue);
+export function selectStageByTFG(tfgValue: number, stage: string): string {
   if (stage === '1') stage = '0';
-  if (getTFGStage(tfgNumber) === stage) {
+  if (getTFGStage(tfgValue) === stage) {
     if (stage === '3' || stage === '4' || stage === '5') {
       return 'high-risk-row';
     } else {

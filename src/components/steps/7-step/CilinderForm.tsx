@@ -1,6 +1,6 @@
 // Step 7
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
   FormControl,
@@ -12,15 +12,20 @@ import './CilinderForm.css';
 import { QuestionMarkTooltip } from '../../../shared/elements/QuestionMarkTooltip';
 import cilinder from '../../../shared/assets/cilinder.jpeg';
 
-export const CilinderForm = ({ selectNextStep }: CheckerNextStep) => {
+export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
   const tooltipText = ' cilindros ';
   const toolTipinfo =
     'Céreos, largos, graxos, epiteliais, hemáticos ou leucocitários.';
+  const [nextState, setNextState] = useState(4);
+  useEffect(() => {
+    selectSteps(nextState, 6);
+  });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '7');
+      setNextState(13);
     } else {
-      selectNextStep(8);
+      setNextState(8);
     }
   };
 

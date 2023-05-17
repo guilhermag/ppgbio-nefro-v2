@@ -1,6 +1,6 @@
 // Step 4
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
   FormControl,
@@ -9,12 +9,18 @@ import {
   RadioGroup,
 } from '@mui/material';
 
-export const RenalFunctionForm = ({ selectNextStep }: CheckerNextStep) => {
+export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
+  const [nextState, setNextState] = useState(4);
+  useEffect(() => {
+    selectSteps(nextState, 3);
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '4');
+      setNextState(13);
     } else {
-      selectNextStep(5);
+      setNextState(5);
     }
   };
 

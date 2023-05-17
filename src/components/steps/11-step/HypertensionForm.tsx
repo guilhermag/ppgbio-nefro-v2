@@ -23,11 +23,10 @@ import {
   Typography,
 } from '@mui/material';
 import { Transition } from '../../../shared/elements/Transition';
-import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import hypertension from '../../../shared/assets/hypertension.jpeg';
 import './Hypertension.css';
 
-export const HypertensionForm = ({ selectNextStep }: CheckerNextStep) => {
+export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
   const [counterSelected, setCounterSelected] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -45,15 +44,16 @@ export const HypertensionForm = ({ selectNextStep }: CheckerNextStep) => {
     if (event.target.checked) {
       setCounterSelected(counterSelected + 1);
     } else {
-      setCounterSelected(counterSelected + -1);
+      setCounterSelected(counterSelected - 1);
     }
   };
 
   useEffect(() => {
     if (counterSelected >= 2) {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '11');
+      selectSteps(13, 10);
     } else {
-      selectNextStep(12);
+      selectSteps(12, 10);
     }
   }, [counterSelected]);
 

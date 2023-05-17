@@ -24,7 +24,7 @@ import {
 } from '../../../shared/constants/questions';
 import { conditionsInfection } from '../../../shared/assets/infection';
 
-export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
+export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
   const formControlLabelStyle = {
     '& .MuiFormControlLabel-label': {
       fontSize: '15px',
@@ -52,9 +52,10 @@ export const InfectionForm = ({ selectNextStep }: CheckerNextStep) => {
 
   useEffect(() => {
     if (counterSelected >= 3) {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '10');
+      selectSteps(13, 9);
     } else {
-      selectNextStep(11);
+      selectSteps(11, 9);
     }
   }, [counterSelected]);
 

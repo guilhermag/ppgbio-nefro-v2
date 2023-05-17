@@ -19,7 +19,7 @@ import { CheckerNextStep } from '../../../shared/interfaces/form';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { EXAMS_DETAILS } from '../../../shared/constants/exams';
 
-export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
+export const ExamsForm = ({ selectSteps }: CheckerNextStep) => {
   const [openCreatinine, setOpenCreatinine] = useState(false);
   const [openUrine, setOpenUrine] = useState(false);
   const [openMicroalb, setOpenMicroalb] = useState(false);
@@ -42,7 +42,7 @@ export const ExamsForm = ({ selectNextStep }: CheckerNextStep) => {
   };
 
   useEffect(() => {
-    selectNextStep(2);
+    selectSteps(2, 0);
   });
 
   return (

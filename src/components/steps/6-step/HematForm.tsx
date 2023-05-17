@@ -13,7 +13,7 @@ import { HEMAT_OPTIONS } from '../../../shared/constants/questions';
 import hematImage from '../../../shared/assets/hemat.png';
 import './HematForm.css';
 
-export const HematForm = ({ selectNextStep }: CheckerNextStep) => {
+export const HematForm = ({ selectSteps }: CheckerNextStep) => {
   const [counterSelected, setCounterSelected] = useState(0);
 
   const checkOptions = HEMAT_OPTIONS;
@@ -28,9 +28,10 @@ export const HematForm = ({ selectNextStep }: CheckerNextStep) => {
 
   useEffect(() => {
     if (counterSelected >= 1) {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '6');
+      selectSteps(13, 5);
     } else {
-      selectNextStep(7);
+      selectSteps(7, 5);
     }
   }, [counterSelected]);
 

@@ -25,17 +25,17 @@ const rows = [
   createData('5', '< 15', 'IR Terminal ou Dialítica'),
 ];
 
-export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
-  const tfgValue = localStorage.getItem('tfgValue') || '';
-  const tfgNumber = Number(tfgValue);
+export const TFGResult = ({ selectSteps }: CheckerNextStep) => {
+  localStorage.setItem('previousStep', '3');
+  const tfgValue = Number(localStorage.getItem('tfgValue') || '0');
 
   useEffect(() => {
-    if (tfgNumber > 60) {
-      selectNextStep(8);
-    } else if (tfgNumber >= 30) {
-      selectNextStep(4);
-    } else if (tfgNumber < 30) {
-      selectNextStep(13);
+    if (tfgValue > 60) {
+      selectSteps(8, 2);
+    } else if (tfgValue >= 30) {
+      selectSteps(4, 2);
+    } else if (tfgValue < 30) {
+      selectSteps(13, 2);
     }
   }, []);
 
@@ -43,7 +43,7 @@ export const TFGResult = ({ selectNextStep }: CheckerNextStep) => {
     <div className='center-content'>
       <h2 className='step-title'>Resultado Taxa de filtração glomerular</h2>
       <p className='tfg-result'>
-        TFG = {tfgValue} ml/min/1,73m²{' '}
+        TFG = {tfgValue.toFixed(2)} ml/min/1,73m²{' '}
         <span className='ckd-epi'>[ckd-epi]</span>
       </p>
       <TableContainer component={Paper}>

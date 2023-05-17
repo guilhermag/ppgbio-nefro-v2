@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 
-export const FinalStep = ({ selectNextStep }: CheckerNextStep) => {
+export const FinalStep = ({ selectSteps }: CheckerNextStep) => {
+  useEffect(() => {
+    selectSteps(14, 12);
+  });
+
   return (
     <div>
       <h2 className='step-title'>Sem encaminhamento.</h2>

@@ -1,6 +1,6 @@
 // Step 12
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
   FormControl,
@@ -12,12 +12,18 @@ import diabetes from '../../../shared/assets/diabetes.jpeg';
 import macroalb from '../../../shared/assets/macroalb.jpeg';
 import './DiabetesForm.css';
 
-export const DiabetesForm = ({ selectNextStep }: CheckerNextStep) => {
+export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
+  const [nextState, setNextState] = useState(12);
+  useEffect(() => {
+    selectSteps(nextState, 11);
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '12');
+      setNextState(13);
     } else {
-      selectNextStep(14);
+      setNextState(14);
     }
   };
 

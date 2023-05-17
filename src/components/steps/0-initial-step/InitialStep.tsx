@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import initialImage from '../../../shared/assets/initial-img.jpeg';
 import { Link } from '@mui/material';
 
-export const InitialStep = ({ selectNextStep }: CheckerNextStep) => {
+export const InitialStep = ({ selectSteps }: CheckerNextStep) => {
   useEffect(() => {
-    selectNextStep(1);
+    selectSteps(1, 0);
+    localStorage.removeItem('previousStep');
+    localStorage.removeItem('tfgValue');
   });
   return (
     <div>

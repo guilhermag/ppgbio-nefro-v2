@@ -1,6 +1,6 @@
 // Step 5
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
   FormControl,
@@ -17,7 +17,11 @@ import {
 } from '@mui/material';
 import './MicroalbForm.css';
 
-export const MicroalbForm = ({ selectNextStep }: CheckerNextStep) => {
+export const MicroalbForm = ({ selectSteps }: CheckerNextStep) => {
+  const [nextState, setNextState] = useState(5);
+  useEffect(() => {
+    selectSteps(nextState, 4);
+  });
   const rowData = {
     normal: '< 30 mg/g',
     micro: '30 mg/g a 299 mg/g',
@@ -26,9 +30,10 @@ export const MicroalbForm = ({ selectNextStep }: CheckerNextStep) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '5');
+      setNextState(13);
     } else {
-      selectNextStep(6);
+      setNextState(6);
     }
   };
 

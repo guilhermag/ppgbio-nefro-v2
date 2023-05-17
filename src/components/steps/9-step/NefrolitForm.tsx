@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from '../../../shared/interfaces/form';
 import {
   Collapse,
@@ -14,13 +14,19 @@ import {
 import { NEFROLIT_OPTIONS } from '../../../shared/constants/questions';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
-export const NefrolitForm = ({ selectNextStep }: CheckerNextStep) => {
+export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
+  const [nextState, setNextState] = useState(9);
+  useEffect(() => {
+    selectSteps(nextState, 8);
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const optionSelected = event.target.value;
     if (optionSelected === 'option3') {
-      selectNextStep(10);
+      setNextState(10);
     } else {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '9');
+      setNextState(13);
     }
   };
 

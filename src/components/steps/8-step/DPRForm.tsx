@@ -12,13 +12,21 @@ import {
 } from '@mui/material';
 import { DPR_OPTIONS } from '../../../shared/constants/questions';
 
-export const DPRForm = ({ selectNextStep }: CheckerNextStep) => {
+export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
+  const tfgValue = Number(localStorage.getItem('tfgValue') || '0');
+  const [nextState, setNextState] = useState(9);
+  let previousStep = tfgValue > 60 ? 3 : 7;
+  useEffect(() => {
+    selectSteps(nextState, previousStep);
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const optionSelected = event.target.value;
     if (optionSelected === 'option6') {
-      selectNextStep(9);
+      setNextState(9);
     } else {
-      selectNextStep(13);
+      localStorage.setItem('previousStep', '8');
+      setNextState(13);
     }
   };
 
