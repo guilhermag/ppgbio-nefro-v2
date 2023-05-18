@@ -13,7 +13,6 @@ export const InitialStep = ({ selectSteps }: CheckerNextStep) => {
   return (
     <div>
       <h2 className='initial'>
-        {import.meta.env.VITE_TITLE}
         Calculadora para triagem de paciente com doença renal crônica
       </h2>
       <div className='initial-content'>
