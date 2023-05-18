@@ -16,7 +16,7 @@
 .app-container {
   background-color: #fff;
   border-radius: 1rem;
-  padding-top: 40px;
+  margin-top: 40px;
   width: 600px;
   min-height: 400px;
   filter: drop-shadow(5px 5px 7px #000);
