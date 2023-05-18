@@ -35,10 +35,6 @@ function App() {
     setPreviousStep(previousStep);
   };
 
-  useEffect(() => {
-    console.log(currentStep);
-  });
-
   const components = [
     <InitialStep selectSteps={selectSteps} />,
     <ExamsForm selectSteps={selectSteps} />,
@@ -74,47 +70,50 @@ function App() {
 
   return (
     <div className='screen-container'>
-      <div className='app-container'>
-        <div className='header'></div>
-        <div className='form-container '>
-          <form onSubmit={handleSubmit}>
-            <div className='inputs-container'>{currentComponent.component}</div>
+      <div className='border-div'>
+        <div className='app-container'>
+          <div className='form-container '>
+            <form onSubmit={handleSubmit}>
+              <div className='inputs-container'>
+                {currentComponent.component}
+              </div>
 
-            <div className={`actions ${classInitial}`}>
-              {isFirstStep ? (
-                <></>
-              ) : (
-                <Button
-                  variant='outlined'
-                  startIcon={<RefreshIcon />}
-                  onClick={(e) => changeStep(previousStep)}
-                >
-                  Voltar
-                </Button>
-              )}
-
-              {isLastStep ? (
-                <></>
-              ) : (
-                <div>
+              <div className={`actions ${classInitial}`}>
+                {isFirstStep ? (
+                  <></>
+                ) : (
                   <Button
                     variant='outlined'
-                    endIcon={<NavigateNextIcon />}
-                    type='submit'
-                    onClick={() => {
-                      setClick(click + 1);
-                    }}
+                    startIcon={<RefreshIcon />}
+                    onClick={(e) => changeStep(previousStep)}
                   >
-                    {nextButton}
+                    Voltar
                   </Button>
-                </div>
-              )}
-            </div>
-          </form>
+                )}
+
+                {isLastStep ? (
+                  <></>
+                ) : (
+                  <div>
+                    <Button
+                      variant='outlined'
+                      endIcon={<NavigateNextIcon />}
+                      type='submit'
+                      onClick={() => {
+                        setClick(click + 1);
+                      }}
+                    >
+                      {nextButton}
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </form>
+          </div>
+          <footer className='center-content'>
+            <img src={footer} alt='utfpr-footer' />
+          </footer>
         </div>
-        <footer className='center-content'>
-          <img src={footer} alt='utfpr-footer' />
-        </footer>
       </div>
       <div className='disclaimer center-content'>
         <div className=''>

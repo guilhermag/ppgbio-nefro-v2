@@ -1,3 +1,8 @@
+/* .border-div {
+  border: 1rem solid #bddaf6;
+  background-color: #bddaf6;
+} */
+
 .screen-container {
   min-height: 100vh;
   display: flex;
@@ -11,7 +16,7 @@
 .app-container {
   background-color: #fff;
   border-radius: 1rem;
-  margin-top: 40px;
+  padding-top: 40px;
   width: 600px;
   min-height: 400px;
   filter: drop-shadow(5px 5px 7px #000);
