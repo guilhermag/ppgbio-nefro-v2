@@ -1,16 +1,15 @@
 // Step 6
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from '../../../../shared/interfaces/form';
 import {
   Checkbox,
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormLabel,
 } from '@mui/material';
-import { HEMAT_OPTIONS } from '../../../shared/constants/questions';
-import hematImage from '../../../shared/assets/hemat.png';
+import { HEMAT_OPTIONS } from '../../../../shared/constants/questions';
+import hematImage from '../../../../shared/assets/hemat.png';
 import './HematForm.css';
 
 export const HematForm = ({ selectSteps }: CheckerNextStep) => {
@@ -38,10 +37,7 @@ export const HematForm = ({ selectSteps }: CheckerNextStep) => {
   return (
     <div>
       <h2 className='step-title'>Apresenta hematúria persistente ?</h2>
-      <p className='subtitle'>
-        Selecione as opções que se encaixam com o paciente, se nenhuma se
-        encaixar não selecione nada.
-      </p>
+      <p className='subtitle'>Selecione uma, duas ou nenhuma opção</p>
       <img src={hematImage} alt='hemat-image' className='hemat-image' />
       <FormControl>
         <FormGroup>

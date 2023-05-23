@@ -1,15 +1,15 @@
 // Step 12
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from '../../../../shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,
   Radio,
   RadioGroup,
 } from '@mui/material';
-import diabetes from '../../../shared/assets/diabetes.jpeg';
-import macroalb from '../../../shared/assets/macroalb.jpeg';
+import diabetes from '../../../../shared/assets/diabetes.jpeg';
+import macroalb from '../../../../shared/assets/macroalb.jpeg';
 import './DiabetesForm.css';
 
 export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
@@ -32,7 +32,7 @@ export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
       <h2 className='step-title'>Diabetes e Macroalbuminuria</h2>
       <div className='subtitle-macro'>
         <p className='subtitle'>
-          O paciente possui diabetes ou macroalbuminuria ?
+          O paciente possui diabetes e macroalbuminuria ?
         </p>
       </div>
       <div className='center-content image-container'>

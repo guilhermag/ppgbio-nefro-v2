@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from '../../../../shared/interfaces/form';
 import {
   Collapse,
   FormControl,
@@ -11,7 +11,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { NEFROLIT_OPTIONS } from '../../../shared/constants/questions';
+import { NEFROLIT_OPTIONS } from '../../../../shared/constants/questions';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
@@ -22,7 +22,7 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const optionSelected = event.target.value;
-    if (optionSelected === 'option3') {
+    if (optionSelected === 'option4') {
       setNextState(10);
     } else {
       localStorage.setItem('previousStep', '9');
@@ -76,6 +76,11 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
               value='option3'
               control={<Radio required />}
               label={NEFROLIT_OPTIONS.TREATED}
+            />
+            <FormControlLabel
+              value='option4'
+              control={<Radio required />}
+              label={NEFROLIT_OPTIONS.NONE}
             />
           </RadioGroup>
         </FormControl>

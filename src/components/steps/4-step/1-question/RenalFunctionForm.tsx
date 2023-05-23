@@ -1,7 +1,7 @@
 // Step 4
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from '../../../../shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,
@@ -28,7 +28,8 @@ export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
     <div className='center-content'>
       <h2 className='step-title'>Apresenta perda rápida da função renal ?</h2>
       <p className='subtitle'>
-        Maior que 5 ml/min/ 1,73 m², confirmado em dois exames.
+        Maior que 5 ml/min/ 1,73 m², confirmados em dois exames em um intervalo
+        de 6 meses.
       </p>
       <FormControl className='center-content'>
         <RadioGroup

@@ -1,11 +1,11 @@
 // Step 11
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from '../../../../shared/interfaces/form';
 import {
   HYPERTENSION_OPTIONS,
   HYPERTENSION_TABLE,
-} from '../../../shared/constants/questions';
+} from '../../../../shared/constants/questions';
 import {
   Button,
   Card,
@@ -22,8 +22,8 @@ import {
   FormGroup,
   Typography,
 } from '@mui/material';
-import { Transition } from '../../../shared/elements/Transition';
-import hypertension from '../../../shared/assets/hypertension.jpeg';
+import { Transition } from '../../../../shared/elements/Transition';
+import hypertension from '../../../../shared/assets/hypertension.jpeg';
 import './Hypertension.css';
 
 export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {

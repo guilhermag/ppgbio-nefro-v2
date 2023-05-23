@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import './InfectionForm.css';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from '../../../../shared/interfaces/form';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import {
   Button,
@@ -17,12 +17,12 @@ import {
   FormGroup,
   Grid,
 } from '@mui/material';
-import { Transition } from '../../../shared/elements/Transition';
+import { Transition } from '../../../../shared/elements/Transition';
 import {
   INFECTION_OPTIONS,
   PROPHYLAXIS_TABLE,
-} from '../../../shared/constants/questions';
-import { conditionsInfection } from '../../../shared/assets/infection';
+} from '../../../../shared/constants/questions';
+import { conditionsInfection } from '../../../../shared/assets/infection';
 
 export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
   const formControlLabelStyle = {
@@ -92,10 +92,7 @@ export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
       </Dialog>
 
       <h2 className='step-title'>Apresenta infecção recorrente ?</h2>
-      <p className='subtitle'>
-        Selecione as opções que se encaixam com o paciente, se nenhuma se
-        encaixar não selecione nada.
-      </p>
+      <p className='subtitle'>Selecione uma, duas ou nenhuma opção</p>
 
       <Grid container spacing={2} className='conditions'>
         {conditionsInfection.map((image, index) => {
