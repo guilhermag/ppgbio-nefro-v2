@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './TFGResult.css';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   Paper,
   Table,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { selectStageByTFG } from '../../../shared/util/util';
+import { selectStageByTFG } from 'shared/util/util';
 
 function createData(stage: string, tfg: string, renalInsufficiency: string) {
   return { stage, tfg, renalInsufficiency };

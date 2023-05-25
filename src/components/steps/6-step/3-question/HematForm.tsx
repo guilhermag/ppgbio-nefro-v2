@@ -1,15 +1,15 @@
 // Step 6
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   Checkbox,
   FormControl,
   FormControlLabel,
   FormGroup,
 } from '@mui/material';
-import { HEMAT_OPTIONS } from '../../../../shared/constants/questions';
-import hematImage from '../../../../shared/assets/hemat.png';
+import { HEMAT_OPTIONS } from 'shared/constants/questions';
+import hematImage from 'shared/assets/hemat.png';
 import './HematForm.css';
 
 export const HematForm = ({ selectSteps }: CheckerNextStep) => {

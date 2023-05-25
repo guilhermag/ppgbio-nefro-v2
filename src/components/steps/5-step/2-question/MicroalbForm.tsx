@@ -1,7 +1,7 @@
 // Step 5
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,
@@ -25,6 +25,7 @@ export const MicroalbForm = ({ selectSteps }: CheckerNextStep) => {
   const rowData = {
     normal: '< 30 mg/g',
     micro: '30 mg/g a 299 mg/g',
+    macro: '>= 300 mg/g',
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,16 +39,17 @@ export const MicroalbForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2 className='step-title'>Microalbuminuria</h2>
+      <h2 className='step-title'>Proteinúria</h2>
       <p className='subtitle'>
-        Exames da relação Albuminuria/Creatinuria (amostra isolada).
+        Exames da relação Albuminúria/Creatinuria (amostra isolada).
       </p>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 550 }} aria-label='simple table'>
           <TableHead>
             <TableRow>
-              <TableCell align='center'>Normoalbuminuria</TableCell>
-              <TableCell align='center'>Microalbuminuria</TableCell>
+              <TableCell align='center'>Normoalbuminúria</TableCell>
+              <TableCell align='center'>Microalbuminúria</TableCell>
+              <TableCell align='center'>Macroalbuminúria</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -56,13 +58,12 @@ export const MicroalbForm = ({ selectSteps }: CheckerNextStep) => {
             >
               <TableCell align='center'>{rowData.normal}</TableCell>
               <TableCell align='left'>{rowData.micro}</TableCell>
+              <TableCell align='left'>{rowData.macro}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
-      <p className='subtitle-micro'>
-        O paciente possui microalbuminuria ou macroalbuminuria ?
-      </p>
+      <p className='subtitle-micro'>O paciente possui proteinúria ?</p>
       <FormControl>
         <RadioGroup
           aria-labelledby='demo-radio-buttons-group-label'

@@ -1,12 +1,12 @@
 import './InitialStep.css';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import { useEffect } from 'react';
-import initialImage from '../../../shared/assets/initial-img.jpeg';
+import initialImage from 'shared/assets/initial-img.jpeg';
 import { Link } from '@mui/material';
 
 export const InitialStep = ({ selectSteps }: CheckerNextStep) => {
   useEffect(() => {
-    selectSteps(1, 0);
+    selectSteps(13, 0);
     localStorage.removeItem('previousStep');
     localStorage.removeItem('tfgValue');
   });

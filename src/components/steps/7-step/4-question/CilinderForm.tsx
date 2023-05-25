@@ -1,7 +1,7 @@
 // Step 7
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,
@@ -9,8 +9,8 @@ import {
   RadioGroup,
 } from '@mui/material';
 import './CilinderForm.css';
-import { QuestionMarkTooltip } from '../../../../shared/elements/QuestionMarkTooltip';
-import cilinder from '../../../../shared/assets/cilinder.jpeg';
+import { QuestionMarkTooltip } from 'shared/elements/QuestionMarkTooltip';
+import cilinder from 'shared/assets/cilinder.jpeg';
 
 export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
   const tooltipText = ' cilindros ';

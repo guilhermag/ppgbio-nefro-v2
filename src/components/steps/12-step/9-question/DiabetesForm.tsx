@@ -1,15 +1,15 @@
 // Step 12
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,
   Radio,
   RadioGroup,
 } from '@mui/material';
-import diabetes from '../../../../shared/assets/diabetes.jpeg';
-import macroalb from '../../../../shared/assets/macroalb.jpeg';
+import diabetes from 'shared/assets/diabetes.jpeg';
+import macroalb from 'shared/assets/macroalb.jpeg';
 import './DiabetesForm.css';
 
 export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
@@ -29,10 +29,10 @@ export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2 className='step-title'>Diabetes e Macroalbuminuria</h2>
+      <h2 className='step-title'>Diabetes e Macroalbuminúria</h2>
       <div className='subtitle-macro'>
         <p className='subtitle'>
-          O paciente possui diabetes e macroalbuminuria ?
+          O paciente possui diabetes e macroalbuminúria ?
         </p>
       </div>
       <div className='center-content image-container'>
@@ -45,7 +45,7 @@ export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
         </div>
         <div className='image-item center-content'>
           <img src={macroalb} alt='diabetes' className='image-form macroalb' />
-          <span className='image-title'>Macroalbuminuria</span>
+          <span className='image-title'>Macroalbuminúria</span>
           <span className='image-subtitle'>Perda de proteína na urina</span>
         </div>
       </div>

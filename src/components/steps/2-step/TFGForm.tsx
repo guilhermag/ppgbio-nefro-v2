@@ -1,7 +1,7 @@
 // Step 2
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep, FormData } from '../../../shared/interfaces/form';
+import { CheckerNextStep, FormData } from 'shared/interfaces/form';
 import {
   Box,
   FormControl,
@@ -16,7 +16,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from '@mui/material';
-import { checkFormDataIsPopulated, getTFG } from '../../../shared/util/util';
+import { checkFormDataIsPopulated, getTFG } from 'shared/util/util';
 import './TFGForm.css';
 
 export const TFGForm = ({ selectSteps }: CheckerNextStep) => {

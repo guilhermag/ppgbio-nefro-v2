@@ -1,23 +1,17 @@
 // Step 1
 
 import {
-  Checkbox,
   Collapse,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
   List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { EXAMS_DETAILS } from '../../../shared/constants/exams';
+import { EXAMS_DETAILS } from 'shared/constants/exams';
 
 export const ExamsForm = ({ selectSteps }: CheckerNextStep) => {
   const [openCreatinine, setOpenCreatinine] = useState(false);

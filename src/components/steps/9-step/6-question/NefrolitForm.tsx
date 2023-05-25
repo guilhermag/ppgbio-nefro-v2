@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   Collapse,
   FormControl,
@@ -11,7 +11,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { NEFROLIT_OPTIONS } from '../../../../shared/constants/questions';
+import { NEFROLIT_OPTIONS } from 'shared/constants/questions';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
@@ -41,7 +41,7 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2 className='step-title'>Apresenta nefrolitiase recorrente ?</h2>
+      <h2 className='step-title'>Apresenta nefrolitíase recorrente ?</h2>
       <p className='subtitle'>Sobre litíase renal considere: </p>
 
       <List>

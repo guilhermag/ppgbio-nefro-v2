@@ -25,7 +25,7 @@ export const NEFROLIT_OPTIONS = {
   IDENTIFIED: 'Identificou causa metabólica, mas não conseguiu tratar.',
   NOT_IDENTIFIED: 'Não conseguiu identificar a causa metabólica.',
   TREATED: 'Identificou e tratou a causa metabólica.',
-  NONE: 'Não apresenta nefrolitiase recorrente.',
+  NONE: 'Não apresenta nefrolitíase recorrente.',
 };
 
 export const INFECTION_OPTIONS = {

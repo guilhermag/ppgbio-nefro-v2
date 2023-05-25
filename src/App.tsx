@@ -24,16 +24,153 @@ import {
   FinalStep,
 } from './components/steps/';
 import { InitialStep } from './components/steps/0-initial-step/InitialStep';
+import { db } from './firebase-config';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { UserForm } from './shared/interfaces/firestore-db';
 
 function App() {
   const [nextStep, setNextStep] = useState(0);
   const [click, setClick] = useState(0);
   const [previousStep, setPreviousStep] = useState(0);
+  const [users, setUsers] = useState([] as any);
+  const usersCollection = collection(db, 'users');
 
   const selectSteps = (nextStep: number, previousStep: number) => {
     setNextStep(nextStep);
     setPreviousStep(previousStep);
   };
+
+  const mockUserSaveData: UserForm = {
+    resultForm: false,
+    tfgData: {
+      age: 18,
+      ethnicity: 'white',
+      value: 109.39,
+      gender: 'male',
+      creatinine: 1,
+    },
+    question1: {
+      result: false,
+    },
+    question2: {
+      result: false,
+    },
+    question3: {
+      options: [
+        {
+          selected: false,
+          label:
+            'Sim, confirmada com dois exames de Urina I, com intervalo de 8 semanas entre os mesmos',
+        },
+        {
+          selected: false,
+          label: 'Pesquisa de hemacias dismorficas positivo',
+        },
+      ],
+      result: false,
+    },
+    question4: {
+      result: false,
+    },
+    question5: {
+      options: [
+        {
+          label:
+            'Paciente com idade entre 40 e 59 anos com dois ou mais cistos em cada rim',
+          selected: false,
+        },
+        {
+          selected: false,
+          label:
+            '10 ou mais cistos em cada rim, principalmente se rins aumentados bilateralmente',
+        },
+        {
+          selected: false,
+          label:
+            'Pacientes com idade entre 15 e 39 anos com três ou mais cistos uni ou bilaterais',
+        },
+        {
+          label:
+            'Presenca concomitante de cistos hepaticos, pancreaticos ou esplenicos',
+          selected: true,
+        },
+        {
+          label:
+            'Paciente com idade igual ou superior a 60 anos com quatro ou mais cistos em cada rim',
+          selected: false,
+        },
+      ],
+      result: false,
+    },
+    question6: {
+      options: [
+        {
+          selected: false,
+          label: 'Nao conseguiu identificar a causa metabolica',
+        },
+        {
+          selected: true,
+          label: 'Identificou e tratou a causa metabolica',
+        },
+        {
+          selected: false,
+          label: 'Identificou causa metabolica, mas nao conseguiu tratar',
+        },
+      ],
+      result: false,
+    },
+    question7: {
+      options: [
+        {
+          label: 'Exclusao de causas anatomicas urologicas ou ginecologicas',
+          selected: false,
+        },
+        {
+          selected: false,
+          label: 'Profilaxia realizada corretamente',
+        },
+        {
+          selected: false,
+          label:
+            'Tres ou mais infeccoes urinarias no periodo de um ano, mesmo com profilaxia adequada',
+        },
+      ],
+      result: false,
+    },
+    question8: {
+      options: [
+        {
+          selected: false,
+          label: 'Suspeita de HAS Secundaria',
+        },
+        {
+          selected: false,
+          label:
+            'Falta de controle da pressao com no minimo tres medicacoes anti-hipertensivas em dose plena, apos avaliacao da adesao',
+        },
+      ],
+      result: false,
+    },
+    question9: {
+      result: false,
+    },
+
+    id: 'VIpYUo4AVSELF6OG9pfo',
+  };
+
+  const createUser = async () => {
+    await addDoc(usersCollection, mockUserSaveData);
+  };
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usersCollection);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as any)));
+    };
+    // getUsers();
+  }, []);
+
+  console.log(users);
 
   const components = [
     <InitialStep selectSteps={selectSteps} />,
@@ -73,6 +210,7 @@ function App() {
       <div className='border-div'>
         <div className='app-container'>
           <div className='form-container '>
+            {/* <button onClick={createUser}>Create User</button> */}
             <form onSubmit={handleSubmit}>
               <div className='inputs-container'>
                 {currentComponent.component}

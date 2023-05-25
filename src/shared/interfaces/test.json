@@ -1,0 +1,107 @@
+{
+  "result_form": false,
+  "tfg_value": {
+    "age": 18,
+    "ethnicity": "white",
+    "value": 109.39,
+    "gender": "male",
+    "creatinine": 1
+  },
+  "question_1": {
+    "result": false
+  },
+  "question_2": {
+    "result": false
+  },
+  "question_3": {
+    "option_1": {
+      "selected": false,
+      "label": "Sim, confirmada com dois exames de Urina I, com intervalo de 8 semanas entre os mesmos"
+    },
+    "result": false,
+    "option_2": {
+      "selected": false,
+      "label": "Pesquisa de hemacias dismorficas positivo"
+    }
+  },
+  "question_4": {
+    "result": false
+  },
+  "question_5": {
+    "options": [
+      {
+        "label": "Paciente com idade entre 40 e 59 anos com dois ou mais cistos em cada rim",
+        "selected": false
+      },
+      {
+        "selected": false,
+        "label": "10 ou mais cistos em cada rim, principalmente se rins aumentados bilateralmente"
+      },
+      {
+        "selected": false,
+        "label": "Pacientes com idade entre 15 e 39 anos com três ou mais cistos uni ou bilaterais"
+      },
+      {
+        "label": "Presenca concomitante de cistos hepaticos, pancreaticos ou esplenicos",
+        "selected": true
+      },
+      {
+        "label": "Paciente com idade igual ou superior a 60 anos com quatro ou mais cistos em cada rim",
+        "selected": false
+      }
+    ],
+    "result": false
+  },
+  "question_6": {
+    "options": [
+      {
+        "selected": false,
+        "label": "Nao conseguiu identificar a causa metabolica"
+      },
+      {
+        "selected": true,
+        "label": "Identificou e tratou a causa metabolica"
+      },
+      {
+        "selected": false,
+        "label": "Identificou causa metabolica, mas nao conseguiu tratar"
+      }
+    ],
+    "result": false
+  },
+  "question_7": {
+    "options": [
+      {
+        "label": "Exclusao de causas anatomicas urologicas ou ginecologicas",
+        "selected": false
+      },
+      {
+        "selected": false,
+        "label": "Profilaxia realizada corretamente"
+      },
+      {
+        "selected": false,
+        "label": "Tres ou mais infeccoes urinarias no periodo de um ano, mesmo com profilaxia adequada"
+      }
+    ],
+    "result": false
+  },
+  "question_8": {
+    "options": [
+      {
+        "selected": false,
+        "label": "Suspeita de HAS Secundaria"
+      },
+      {
+        "selected": false,
+        "label": "Falta de controle da pressao com no minimo tres medicacoes anti-hipertensivas em dose plena, apos avaliacao da adesao"
+      }
+    ],
+    "result": false
+  },
+  "question_9": {
+    "result": false
+  },
+
+  "id": "VIpYUo4AVSELF6OG9pfo"
+}

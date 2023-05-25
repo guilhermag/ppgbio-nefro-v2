@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import './DPRForm.css';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,
@@ -10,7 +10,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { DPR_OPTIONS } from '../../../../shared/constants/questions';
+import { DPR_OPTIONS } from 'shared/constants/questions';
 
 export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
   const tfgValue = Number(localStorage.getItem('tfgValue') || '0');

@@ -10,9 +10,9 @@ export const EXAMS_DETAILS = {
       'Deve-se coletar preferencialmente a primeira urina da manhã ou dar um intervalo mínimo de 2 (duas) horas após a última micção.',
   },
   MICROALB: {
-    LABEL: 'Microalbuminuria',
+    LABEL: 'Microalbuminúria',
     DETAIL:
-      'Colher, preferencialmente, a primeira urina da manhã ou com intervalo mínimo de 04 horas após a última micção. Desprezar o primeiro jato de urina, e sem interromper a micção, coletar o segundo jato de urina.',
+      'Deve-se coletar preferencialmente, a primeira a primeira urina da manhã ou com intervalo mínimo de 04 horas após a última micção. Desprezar o primeiro jato de urina, e sem interromper a micção, coletar o segundo jato de urina.',
   },
   ULTRASOUND: {
     LABEL: 'Ultrassom de aparelho urinário',

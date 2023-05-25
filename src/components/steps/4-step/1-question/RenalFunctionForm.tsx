@@ -1,7 +1,7 @@
 // Step 4
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep } from '../../../../shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   FormControl,
   FormControlLabel,

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { CheckerNextStep } from '../../../shared/interfaces/form';
+import { useEffect } from 'react';
+import { CheckerNextStep } from 'shared/interfaces/form';
 
 export const FinalStep = ({ selectSteps }: CheckerNextStep) => {
   useEffect(() => {
