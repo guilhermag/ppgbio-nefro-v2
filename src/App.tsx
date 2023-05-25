@@ -1,11 +1,19 @@
 import RefreshIcon from '@mui/icons-material/Refresh';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import SaveIcon from '@mui/icons-material/Save';
 import footer from './shared/assets/apoio-utfpr.png';
 
 import './App.css';
 import { FormComponent } from './shared/interfaces/form';
 import { useForm } from './hooks/useForm';
-import { Button, IconButton } from '@mui/material';
+import {
+  AlertColor,
+  Button,
+  CircularProgress,
+  IconButton,
+  Snackbar,
+} from '@mui/material';
 import { useEffect, useState } from 'react';
 import {
   ExamsForm,
@@ -24,153 +32,41 @@ import {
   FinalStep,
 } from './components/steps/';
 import { InitialStep } from './components/steps/0-initial-step/InitialStep';
-import { db } from './firebase-config';
-import { addDoc, collection, getDocs } from 'firebase/firestore';
-import { UserForm } from './shared/interfaces/firestore-db';
+
+import { CreateUser } from './shared/interfaces/firestore-db';
+import { createUser, getUsers } from 'services/firebase-config';
+import { Alert } from 'shared/elements/Alert';
 
 function App() {
   const [nextStep, setNextStep] = useState(0);
   const [click, setClick] = useState(0);
   const [previousStep, setPreviousStep] = useState(0);
-  const [users, setUsers] = useState([] as any);
-  const usersCollection = collection(db, 'users');
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('consultar suporte' as String);
+  const [status, setStatus] = useState('info' as AlertColor);
+  const [hideButton, setHideButton] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  const updateStatusMessage = (status: AlertColor, message: String) => {
+    setMessage(message);
+    setStatus(status);
+    setOpen(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   const selectSteps = (nextStep: number, previousStep: number) => {
     setNextStep(nextStep);
     setPreviousStep(previousStep);
   };
-
-  const mockUserSaveData: UserForm = {
-    resultForm: false,
-    tfgData: {
-      age: 18,
-      ethnicity: 'white',
-      value: 109.39,
-      gender: 'male',
-      creatinine: 1,
-    },
-    question1: {
-      result: false,
-    },
-    question2: {
-      result: false,
-    },
-    question3: {
-      options: [
-        {
-          selected: false,
-          label:
-            'Sim, confirmada com dois exames de Urina I, com intervalo de 8 semanas entre os mesmos',
-        },
-        {
-          selected: false,
-          label: 'Pesquisa de hemacias dismorficas positivo',
-        },
-      ],
-      result: false,
-    },
-    question4: {
-      result: false,
-    },
-    question5: {
-      options: [
-        {
-          label:
-            'Paciente com idade entre 40 e 59 anos com dois ou mais cistos em cada rim',
-          selected: false,
-        },
-        {
-          selected: false,
-          label:
-            '10 ou mais cistos em cada rim, principalmente se rins aumentados bilateralmente',
-        },
-        {
-          selected: false,
-          label:
-            'Pacientes com idade entre 15 e 39 anos com três ou mais cistos uni ou bilaterais',
-        },
-        {
-          label:
-            'Presenca concomitante de cistos hepaticos, pancreaticos ou esplenicos',
-          selected: true,
-        },
-        {
-          label:
-            'Paciente com idade igual ou superior a 60 anos com quatro ou mais cistos em cada rim',
-          selected: false,
-        },
-      ],
-      result: false,
-    },
-    question6: {
-      options: [
-        {
-          selected: false,
-          label: 'Nao conseguiu identificar a causa metabolica',
-        },
-        {
-          selected: true,
-          label: 'Identificou e tratou a causa metabolica',
-        },
-        {
-          selected: false,
-          label: 'Identificou causa metabolica, mas nao conseguiu tratar',
-        },
-      ],
-      result: false,
-    },
-    question7: {
-      options: [
-        {
-          label: 'Exclusao de causas anatomicas urologicas ou ginecologicas',
-          selected: false,
-        },
-        {
-          selected: false,
-          label: 'Profilaxia realizada corretamente',
-        },
-        {
-          selected: false,
-          label:
-            'Tres ou mais infeccoes urinarias no periodo de um ano, mesmo com profilaxia adequada',
-        },
-      ],
-      result: false,
-    },
-    question8: {
-      options: [
-        {
-          selected: false,
-          label: 'Suspeita de HAS Secundaria',
-        },
-        {
-          selected: false,
-          label:
-            'Falta de controle da pressao com no minimo tres medicacoes anti-hipertensivas em dose plena, apos avaliacao da adesao',
-        },
-      ],
-      result: false,
-    },
-    question9: {
-      result: false,
-    },
-
-    id: 'VIpYUo4AVSELF6OG9pfo',
-  };
-
-  const createUser = async () => {
-    await addDoc(usersCollection, mockUserSaveData);
-  };
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollection);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as any)));
-    };
-    // getUsers();
-  }, []);
-
-  console.log(users);
 
   const components = [
     <InitialStep selectSteps={selectSteps} />,
@@ -199,40 +95,94 @@ function App() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     changeStep(nextStep);
   };
 
   const nextButton = currentStep === 0 ? 'Começar' : 'Avançar';
   const classInitial = currentStep === 0 ? '' : 'center-content';
 
+  useEffect(() => {
+    const checkShowButton = currentStep === 0 || currentStep > 12;
+    setHideButton(checkShowButton);
+    setLoading(false);
+  }, [currentComponent.component]);
+
   return (
     <div className='screen-container'>
       <div className='border-div'>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert onClose={handleClose} severity={status} sx={{ width: '100%' }}>
+            {message}
+          </Alert>
+        </Snackbar>
         <div className='app-container'>
-          <div className='form-container '>
-            {/* <button onClick={createUser}>Create User</button> */}
-            <form onSubmit={handleSubmit}>
-              <div className='inputs-container'>
-                {currentComponent.component}
-              </div>
+          {/* <button
+            onClick={() => {
+              getUsers()
+                .then(() => {
+                  updateStatusMessage('success', 'Informações recuperadas com sucesso!');
+                })
+                .catch((e) => {
+                  console.error(e);
+                  updateStatusMessage('error', 'Falha ao recuperar as informações do banco de dados!');
+                });
+              // createUser(mockUserNefroData);
+            }}
+          >
+            Create User
+          </button> */}
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <div className='form-container '>
+              <form onSubmit={handleSubmit}>
+                <div className='inputs-container'>
+                  {currentComponent.component}
+                </div>
 
-              <div className={`actions ${classInitial}`}>
-                {isFirstStep ? (
-                  <></>
-                ) : (
-                  <Button
-                    variant='outlined'
-                    startIcon={<RefreshIcon />}
-                    onClick={(e) => changeStep(previousStep)}
-                  >
-                    Voltar
-                  </Button>
-                )}
+                <div className={`actions ${classInitial}`}>
+                  {hideButton ? (
+                    <></>
+                  ) : (
+                    <Button
+                      variant='outlined'
+                      startIcon={<NavigateBeforeIcon />}
+                      onClick={(e) => changeStep(previousStep)}
+                    >
+                      Voltar
+                    </Button>
+                  )}
 
-                {isLastStep ? (
-                  <></>
-                ) : (
-                  <div>
+                  {isLastStep ? (
+                    <>
+                      <Button
+                        variant='outlined'
+                        startIcon={<RefreshIcon />}
+                        onClick={() => {
+                          localStorage.clear();
+                          changeStep(0);
+                        }}
+                      >
+                        Recomeçar
+                      </Button>
+                      <Button
+                        variant='outlined'
+                        endIcon={<SaveIcon />}
+                        type='submit'
+                        onClick={() => {
+                          updateStatusMessage('success', 'Dados salvos');
+                        }}
+                      >
+                        Salvar dados
+                      </Button>
+                    </>
+                  ) : (
                     <Button
                       variant='outlined'
                       endIcon={<NavigateNextIcon />}
@@ -243,11 +193,11 @@ function App() {
                     >
                       {nextButton}
                     </Button>
-                  </div>
-                )}
-              </div>
-            </form>
-          </div>
+                  )}
+                </div>
+              </form>
+            </div>
+          )}
           <footer className='center-content'>
             <img src={footer} alt='utfpr-footer' />
           </footer>
