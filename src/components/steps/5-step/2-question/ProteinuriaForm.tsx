@@ -15,9 +15,9 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import './MicroalbForm.css';
+import './ProteinuriaForm.css';
 
-export const MicroalbForm = ({ selectSteps }: CheckerNextStep) => {
+export const ProteinuriaForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(5);
   useEffect(() => {
     selectSteps(nextState, 4);

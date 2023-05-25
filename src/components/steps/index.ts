@@ -2,7 +2,7 @@ export * from './1-step/ExamsForm';
 export * from './2-step/TFGForm';
 export * from './3-step/TFGResult';
 export * from './4-step/1-question/RenalFunctionForm';
-export * from './5-step/2-question/MicroalbForm';
+export * from './5-step/2-question/ProteinuriaForm';
 export * from './6-step/3-question/HematForm';
 export * from './7-step/4-question/CilinderForm';
 export * from './8-step/5-question/DPRForm';

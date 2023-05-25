@@ -6,7 +6,7 @@ import { Link } from '@mui/material';
 
 export const InitialStep = ({ selectSteps }: CheckerNextStep) => {
   useEffect(() => {
-    selectSteps(1, 0);
+    selectSteps(5, 0);
     localStorage.removeItem('previousStep');
     localStorage.removeItem('tfgValue');
   });
