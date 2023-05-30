@@ -1,6 +1,10 @@
 import {
   CreateUser,
-  CreateUserLocalStorage,
+  DataStorage,
+  Option,
+  OptionStorage,
+  Question,
+  QuestionStorage,
 } from 'shared/interfaces/firestore-db';
 import * as CONSTS from '../constants';
 import { FormData } from '../interfaces/form';
@@ -70,7 +74,9 @@ function getTFGStage(tfgNumber: number) {
 }
 
 export function getFormResult(): CreateUser {
-  const formData: FormData = JSON.parse(localStorage.getItem('formData') || '');
+  const formData: FormData = JSON.parse(
+    localStorage.getItem('formData') || '{}'
+  );
   return {
     age: Number(formData.age),
     creatinine: Number(formData.creatinine),
@@ -78,6 +84,7 @@ export function getFormResult(): CreateUser {
     gender: formData.gender,
     tfgValue: Number(formData.tfgValue),
     resultForm: false,
+    questions: [],
   };
 }
 
@@ -86,10 +93,51 @@ export function saveUserDataLocalStorage(formData: CreateUser) {
 }
 
 export function getUserDataLocalStorage(): CreateUser {
-  const userData: CreateUserLocalStorage = JSON.parse(
-    localStorage.getItem('userData') || ''
+  const userData: DataStorage = JSON.parse(
+    localStorage.getItem('userData') || '{}'
   );
+  const user: CreateUser = mapLocalStorageUser(userData);
 
-  for (let prop in userData) {
+  if (userData.questions) {
+    userData.questions.forEach((questionStorage) => {
+      const questionData: Question = mapLocalStorageQuestion(questionStorage);
+
+      if (questionStorage.options) {
+        questionStorage.options.forEach((optionStorage) => {
+          const optionData: Option = mapLocalStorageOption(optionStorage);
+          questionData.options.push(optionData);
+        });
+      }
+      user.questions.push(questionData);
+    });
   }
+  return user;
+}
+
+function mapLocalStorageUser(userData: DataStorage): CreateUser {
+  return {
+    age: Number(userData.age),
+    ethnicity: userData.ethnicity,
+    tfgValue: Number(userData.tfgValue),
+    gender: userData.gender,
+    creatinine: Number(userData.creatinine),
+    questions: [],
+    resultForm: userData.resultForm === 'true' ? true : false,
+  };
+}
+
+function mapLocalStorageQuestion(questionStorage: QuestionStorage): Question {
+  return {
+    number: Number(questionStorage.number),
+    label: questionStorage.label,
+    options: [],
+    result: questionStorage.result === 'true' ? true : false,
+  };
+}
+
+function mapLocalStorageOption(optionStorage: OptionStorage): Option {
+  return {
+    label: optionStorage.label,
+    selected: optionStorage.selected === 'true' ? true : false,
+  };
 }

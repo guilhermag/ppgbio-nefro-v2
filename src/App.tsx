@@ -42,12 +42,12 @@ function App() {
   const [click, setClick] = useState(0);
   const [previousStep, setPreviousStep] = useState(0);
   const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState('consultar suporte' as String);
+  const [message, setMessage] = useState('consultar suporte' as string);
   const [status, setStatus] = useState('info' as AlertColor);
   const [hideButton, setHideButton] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const updateStatusMessage = (status: AlertColor, message: String) => {
+  const updateStatusMessage = (status: AlertColor, message: string) => {
     setMessage(message);
     setStatus(status);
     setOpen(true);
