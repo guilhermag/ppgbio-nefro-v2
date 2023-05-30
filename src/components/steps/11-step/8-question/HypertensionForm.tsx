@@ -5,6 +5,7 @@ import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   HYPERTENSION_OPTIONS,
   HYPERTENSION_TABLE,
+  LABELS,
 } from 'shared/constants/questions';
 import {
   Button,
@@ -99,7 +100,7 @@ export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
         </DialogActions>
       </Dialog>
 
-      <h2 className='step-title'>Tem hipertensão ?</h2>
+      <h2 className='step-title'>{LABELS.QUESTION_8.TITLE}</h2>
 
       <div className='form-content'>
         <Card sx={{ maxWidth: 350 }} className='center-content'>
@@ -124,10 +125,7 @@ export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
           </CardActions>
         </Card>
 
-        <p className='subtitle'>
-          Selecione as opções que se encaixam com o paciente, se nenhuma se
-          encaixar não selecione nada.
-        </p>
+        <p className='subtitle'>{LABELS.QUESTION_8.SUBTITLE}</p>
 
         <FormControl>
           <FormGroup>

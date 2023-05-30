@@ -89,3 +89,47 @@ export const HYPERTENSION_TABLE = {
     OPTION_1: '- Produção autônoma de aldosterona pelo córtex adrenal.',
   },
 };
+
+export const LABELS = {
+  QUESTION_1: {
+    TITLE: 'Perda rápida da função renal',
+    SUBTITLE:
+      'O paciente possui Perda rápida da função renal ? Maior que 5 ml/min/ 1.73 m2, confirmados em dois exames em um intervalo de 6 meses.',
+  },
+  QUESTION_2: {
+    TITLE: 'Proteinúria',
+    SUBTITLE: 'O paciente possui proteinúria ?',
+  },
+  QUESTION_3: {
+    TITLE: 'Hematúria persistente',
+    SUBTITLE:
+      'O paciente possui hematúria persistente ?. Selecione uma, duas ou nenhuma opção.',
+  },
+  QUESTION_4: {
+    TITLE: 'Cilindros',
+    SUBTITLE: 'Apresenta cilindros com potencial patológico ?',
+  },
+  QUESTION_5: {
+    TITLE: 'Doença policística renal',
+    SUBTITLE:
+      'Selecione a situação que mais se adeque com o histórico do paciente:',
+  },
+  QUESTION_6: {
+    TITLE: 'Nefrolitíase recorrente',
+    SUBTITLE: 'Sobre litíase renal considere: ',
+  },
+  QUESTION_7: {
+    TITLE: 'Infecção recorrente',
+    SUBTITLE:
+      'O paciente possui infecção recorrente ?. Selecione uma, duas ou nenhuma opção.',
+  },
+  QUESTION_8: {
+    TITLE: 'Hipertensão Secundária',
+    SUBTITLE:
+      'O paciente possui hipertensão Secundária ?. Selecione uma, duas ou nenhuma opção.',
+  },
+  QUESTION_9: {
+    TITLE: 'Diabetes e Macroalbuminúria',
+    SUBTITLE: 'O paciente possui diabetes e macroalbuminúria ?',
+  },
+};

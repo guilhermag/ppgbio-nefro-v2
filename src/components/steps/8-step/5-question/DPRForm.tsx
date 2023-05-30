@@ -10,7 +10,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { DPR_OPTIONS } from 'shared/constants/questions';
+import { DPR_OPTIONS, LABELS } from 'shared/constants/questions';
 
 export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
   const tfgValue = Number(localStorage.getItem('tfgValue') || '0');
@@ -32,10 +32,8 @@ export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2 className='step-title'>Suspeita de doença policística renal ?</h2>
-      <p className='subtitle'>
-        Selecione a situação que mais se adeque com o histórico do paciente:
-      </p>
+      <h2 className='step-title'>{LABELS.QUESTION_5.TITLE}</h2>
+      <p className='subtitle'>{LABELS.QUESTION_5.SUBTITLE}</p>
       <div className='center-content left-content'>
         <FormControl>
           <FormLabel focused>Histórico familiar positivo</FormLabel>

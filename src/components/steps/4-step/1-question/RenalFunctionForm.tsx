@@ -8,6 +8,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
+import { LABELS } from 'shared/constants/questions';
 
 export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(4);
@@ -26,11 +27,8 @@ export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2 className='step-title'>Apresenta perda rápida da função renal ?</h2>
-      <p className='subtitle'>
-        Maior que 5 ml/min/ 1,73 m², confirmados em dois exames em um intervalo
-        de 6 meses.
-      </p>
+      <h2 className='step-title'>{LABELS.QUESTION_1.TITLE}</h2>
+      <p className='subtitle'>{LABELS.QUESTION_1.SUBTITLE}</p>
       <FormControl className='center-content'>
         <RadioGroup
           aria-labelledby='demo-radio-buttons-group-label'

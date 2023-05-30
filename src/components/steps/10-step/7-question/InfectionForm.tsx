@@ -20,6 +20,7 @@ import {
 import { Transition } from 'shared/elements/Transition';
 import {
   INFECTION_OPTIONS,
+  LABELS,
   PROPHYLAXIS_TABLE,
 } from 'shared/constants/questions';
 import { conditionsInfection } from 'shared/assets/infection';
@@ -91,8 +92,8 @@ export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
         </DialogActions>
       </Dialog>
 
-      <h2 className='step-title'>Apresenta infecção recorrente ?</h2>
-      <p className='subtitle'>Selecione uma, duas ou nenhuma opção</p>
+      <h2 className='step-title'>{LABELS.QUESTION_7.TITLE}</h2>
+      <p className='subtitle'>{LABELS.QUESTION_7.SUBTITLE}</p>
 
       <Grid container spacing={2} className='conditions'>
         {conditionsInfection.map((image, index) => {

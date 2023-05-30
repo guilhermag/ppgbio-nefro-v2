@@ -16,6 +16,7 @@ import {
   TableRow,
 } from '@mui/material';
 import './ProteinuriaForm.css';
+import { LABELS } from 'shared/constants/questions';
 
 export const ProteinuriaForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(5);
@@ -39,7 +40,7 @@ export const ProteinuriaForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2 className='step-title'>Proteinúria</h2>
+      <h2 className='step-title'>{LABELS.QUESTION_2.TITLE}</h2>
       <p className='subtitle'>
         Exames da relação Albuminúria/Creatinuria (amostra isolada).
       </p>
@@ -63,7 +64,7 @@ export const ProteinuriaForm = ({ selectSteps }: CheckerNextStep) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <p className='subtitle-micro'>O paciente possui proteinúria ?</p>
+      <p className='subtitle-micro'>{LABELS.QUESTION_2.SUBTITLE}</p>
       <FormControl>
         <RadioGroup
           aria-labelledby='demo-radio-buttons-group-label'

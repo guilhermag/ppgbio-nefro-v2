@@ -11,6 +11,7 @@ import {
 import './CilinderForm.css';
 import { QuestionMarkTooltip } from 'shared/elements/QuestionMarkTooltip';
 import cilinder from 'shared/assets/cilinder.jpeg';
+import { LABELS } from 'shared/constants/questions';
 
 export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
   const tooltipText = ' cilindros ';
@@ -31,7 +32,7 @@ export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div className='center-content bg-card'>
-      <h2 className='header-title'>Cilindros</h2>
+      <h2 className='header-title'>{LABELS.QUESTION_4.TITLE}</h2>
       <p className='subtitle subtitle-content'>
         Apresenta
         <QuestionMarkTooltip title={toolTipinfo} placement='top-start'>

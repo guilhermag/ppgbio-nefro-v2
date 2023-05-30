@@ -1,3 +1,7 @@
+import {
+  CreateUser,
+  CreateUserLocalStorage,
+} from 'shared/interfaces/firestore-db';
 import * as CONSTS from '../constants';
 import { FormData } from '../interfaces/form';
 
@@ -62,5 +66,30 @@ function getTFGStage(tfgNumber: number) {
     return '4';
   } else {
     return '5';
+  }
+}
+
+export function getFormResult(): CreateUser {
+  const formData: FormData = JSON.parse(localStorage.getItem('formData') || '');
+  return {
+    age: Number(formData.age),
+    creatinine: Number(formData.creatinine),
+    ethnicity: formData.ethnicity,
+    gender: formData.gender,
+    tfgValue: Number(formData.tfgValue),
+    resultForm: false,
+  };
+}
+
+export function saveUserDataLocalStorage(formData: CreateUser) {
+  localStorage.setItem('userData', JSON.stringify(formData));
+}
+
+export function getUserDataLocalStorage(): CreateUser {
+  const userData: CreateUserLocalStorage = JSON.parse(
+    localStorage.getItem('userData') || ''
+  );
+
+  for (let prop in userData) {
   }
 }

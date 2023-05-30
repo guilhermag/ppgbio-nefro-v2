@@ -8,7 +8,7 @@ import {
   FormControlLabel,
   FormGroup,
 } from '@mui/material';
-import { HEMAT_OPTIONS } from 'shared/constants/questions';
+import { HEMAT_OPTIONS, LABELS } from 'shared/constants/questions';
 import hematImage from 'shared/assets/hemat.png';
 import './HematForm.css';
 
@@ -36,8 +36,8 @@ export const HematForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2 className='step-title'>Apresenta hematúria persistente ?</h2>
-      <p className='subtitle'>Selecione uma, duas ou nenhuma opção</p>
+      <h2 className='step-title'>{LABELS.QUESTION_3.TITLE}</h2>
+      <p className='subtitle'>{LABELS.QUESTION_3.SUBTITLE}</p>
       <img src={hematImage} alt='hemat-image' className='hemat-image' />
       <FormControl>
         <FormGroup>

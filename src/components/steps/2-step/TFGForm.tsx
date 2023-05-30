@@ -50,7 +50,8 @@ export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
 
     if (dataCheck) {
       const tfg = getTFG(ethnicity, gender, creatinine, age);
-      localStorage.setItem('tfgValue', tfg);
+      formData.tfgValue = tfg;
+      localStorage.setItem('formData', JSON.stringify(formData));
       selectSteps(3, 1);
     } else {
       selectSteps(2, 1);

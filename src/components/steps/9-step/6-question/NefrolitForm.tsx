@@ -11,7 +11,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
-import { NEFROLIT_OPTIONS } from 'shared/constants/questions';
+import { LABELS, NEFROLIT_OPTIONS } from 'shared/constants/questions';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
@@ -41,9 +41,8 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div>
-      <h2 className='step-title'>Apresenta nefrolitíase recorrente ?</h2>
-      <p className='subtitle'>Sobre litíase renal considere: </p>
-
+      <h2 className='step-title'>{LABELS.QUESTION_6.TITLE}</h2>
+      <p className='subtitle'>{LABELS.QUESTION_6.SUBTITLE}</p>
       <List>
         <ListItemButton onClick={handleClick}>
           <ListItemText primary={label} />

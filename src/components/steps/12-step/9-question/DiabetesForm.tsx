@@ -11,6 +11,7 @@ import {
 import diabetes from 'shared/assets/diabetes.jpeg';
 import macroalb from 'shared/assets/macroalb.jpeg';
 import './DiabetesForm.css';
+import { LABELS } from 'shared/constants/questions';
 
 export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(12);
@@ -29,11 +30,9 @@ export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
 
   return (
     <div className='center-content'>
-      <h2 className='step-title'>Diabetes e Macroalbuminúria</h2>
+      <h2 className='step-title'>{LABELS.QUESTION_9.TITLE}</h2>
       <div className='subtitle-macro'>
-        <p className='subtitle'>
-          O paciente possui diabetes e macroalbuminúria ?
-        </p>
+        <p className='subtitle'>{LABELS.QUESTION_9.SUBTITLE}</p>
       </div>
       <div className='center-content image-container'>
         <div className='image-item center-content'>

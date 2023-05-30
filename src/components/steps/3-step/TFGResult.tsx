@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './TFGResult.css';
-import { CheckerNextStep } from 'shared/interfaces/form';
+import { CheckerNextStep, FormData } from 'shared/interfaces/form';
 import {
   Paper,
   Table,
@@ -10,7 +10,8 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { selectStageByTFG } from 'shared/util/util';
+import { getFormResult, selectStageByTFG } from 'shared/util/util';
+import { CreateUser } from 'shared/interfaces/firestore-db';
 
 function createData(stage: string, tfg: string, renalInsufficiency: string) {
   return { stage, tfg, renalInsufficiency };
@@ -27,7 +28,8 @@ const rows = [
 
 export const TFGResult = ({ selectSteps }: CheckerNextStep) => {
   localStorage.setItem('previousStep', '3');
-  const tfgValue = Number(localStorage.getItem('tfgValue') || '0');
+  const formResult: CreateUser = getFormResult();
+  const tfgValue = formResult.tfgValue || 0;
 
   useEffect(() => {
     if (tfgValue > 60) {

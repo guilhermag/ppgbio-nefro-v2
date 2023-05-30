@@ -11,4 +11,5 @@ export interface FormData {
   creatinine: string;
   gender: string;
   ethnicity: string;
+  tfgValue?: string;
 }
