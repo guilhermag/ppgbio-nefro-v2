@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { FormView } from 'views/form-view/Form-view';
 import { TableViewComponent } from 'views/table-view/Table-view';
+import 'App.css';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -25,7 +25,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -40,30 +40,69 @@ function a11yProps(index: number) {
 }
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [disableFormTab, setDisableFormTab] = useState(false);
+  const [disableTableTab, setDisableTableTab] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
+  const controlTab = (disableTableTab: boolean, disableFormTab: boolean) => {
+    setDisableFormTab(disableFormTab);
+    setDisableTableTab(disableTableTab);
+  };
+
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label='basic tabs example'
-        >
-          <Tab label='Calculadora para triagem' {...a11yProps(0)} />
-          <Tab label='Tabela dos dados' {...a11yProps(1)} />
-        </Tabs>
+    <div className='main-container'>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label='tab container'
+            className='tab-test'
+          >
+            <Tab
+              label='Calculadora para triagem'
+              {...a11yProps(0)}
+              disabled={disableFormTab}
+            />
+            <Tab
+              label='Tabela dos dados'
+              {...a11yProps(1)}
+              disabled={disableTableTab}
+            />
+          </Tabs>
+        </Box>
+        <TabPanel value={value} index={0}>
+          <FormView controlTab={controlTab} />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <TableViewComponent controlTab={controlTab} />
+        </TabPanel>
+        <div className='disclaimer center-content'>
+          <div className=''>
+            <h3>Avisos legais e isenção de responsabilidades</h3>
+            <p>
+              Todas as informações contidas aqui e produzidas pelo sistema
+              NefroCheck são fornecidas{' '}
+              <span className='not'>apenas com propósitos educacionais</span>.
+            </p>
+            <p>
+              Estas informações{' '}
+              <span className='not'>não devem ser usadas</span> para diagnóstico
+              ou tratamento de quaisquer problemas de saúde ou doenças.
+            </p>
+            <p>
+              ESTAS INFORMAÇÕES{' '}
+              <span className='not'>NÃO DEVEM SUBSTITUIR</span> O JULGAMENTO
+              CLÍNICO OU ORIENTAR DE ALGUMA FORMA O TRATAMENTO INDIVIDUAL DOS
+              PACIENTES.
+            </p>
+          </div>
+        </div>
       </Box>
-      <TabPanel value={value} index={0}>
-        <FormView />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <TableViewComponent />
-      </TabPanel>
-    </Box>
+    </div>
   );
 }

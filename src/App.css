@@ -1,0 +1,33 @@
+.main-container {
+  background-color: #bddaf6;
+  height: 100vh;
+  position: relative;
+}
+
+.tab-test {
+  background-color: #fff;
+}
+
+.disclaimer {
+  position: absolute;
+  bottom: 0;
+  background-color: rgb(175, 173, 173);
+  width: 100%;
+  font-weight: 500;
+}
+
+.disclaimer h3 {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.disclaimer p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.not {
+  color: rgb(161, 0, 0);
+  font-weight: 700;
+}

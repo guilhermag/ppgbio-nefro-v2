@@ -35,8 +35,9 @@ import { Alert } from 'shared/elements/Alert';
 import { saveUserData } from 'services/firebase-config';
 import { FormComponent } from 'shared/interfaces/form';
 import { useForm } from 'hooks/useForm';
+import { TabsControl } from 'shared/interfaces/table';
 
-export const FormView = () => {
+export const FormView = ({ controlTab }: TabsControl) => {
   const [nextStep, setNextStep] = useState(0);
   const [click, setClick] = useState(0);
   const [previousStep, setPreviousStep] = useState(0);
@@ -106,6 +107,11 @@ export const FormView = () => {
     const checkShowButton = currentStep === 0 || currentStep > 12;
     setHideButton(checkShowButton);
     setLoading(false);
+    if (currentStep !== 0) {
+      controlTab(true, true);
+    } else {
+      controlTab(false, false);
+    }
   }, [currentComponent.component]);
 
   return (
@@ -122,21 +128,6 @@ export const FormView = () => {
           </Alert>
         </Snackbar>
         <div className='app-container'>
-          {/* <button
-            onClick={() => {
-              getUsers()
-                .then(() => {
-                  updateStatusMessage('success', 'Informações recuperadas com sucesso!');
-                })
-                .catch((e) => {
-                  console.error(e);
-                  updateStatusMessage('error', 'Falha ao recuperar as informações do banco de dados!');
-                });
-              // createUser(mockUserNefroData);
-            }}
-          >
-            Create User
-          </button> */}
           {loading ? (
             <CircularProgress />
           ) : (
@@ -212,26 +203,6 @@ export const FormView = () => {
           <footer className='center-content'>
             <img src={footer} alt='utfpr-footer' />
           </footer>
-        </div>
-      </div>
-      <div className='disclaimer center-content'>
-        <div className=''>
-          <h3>Avisos legais e isenção de responsabilidades</h3>
-          <p>
-            Todas as informações contidas aqui e produzidas pelo sistema
-            NefroCheck são fornecidas{' '}
-            <span className='not'>apenas com propósitos educacionais</span>.
-          </p>
-          <p>
-            Estas informações <span className='not'>não devem ser usadas</span>{' '}
-            para diagnóstico ou tratamento de quaisquer problemas de saúde ou
-            doenças.
-          </p>
-          <p>
-            ESTAS INFORMAÇÕES <span className='not'>NÃO DEVEM SUBSTITUIR</span>{' '}
-            O JULGAMENTO CLÍNICO OU ORIENTAR DE ALGUMA FORMA O TRATAMENTO
-            INDIVIDUAL DOS PACIENTES.
-          </p>
         </div>
       </div>
     </div>
