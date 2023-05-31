@@ -12,6 +12,7 @@ import './CilinderForm.css';
 import { QuestionMarkTooltip } from 'shared/elements/QuestionMarkTooltip';
 import cilinder from 'shared/assets/cilinder.jpeg';
 import { LABELS } from 'shared/constants/questions';
+import { saveQuestionLocalStorage } from 'shared/util/util';
 
 export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
   const tooltipText = ' cilindros ';
@@ -24,8 +25,10 @@ export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
       localStorage.setItem('previousStep', '7');
+      saveQuestionLocalStorage(4, LABELS.QUESTION_4.TITLE, true);
       setNextState(13);
     } else {
+      saveQuestionLocalStorage(4, LABELS.QUESTION_4.TITLE, false);
       setNextState(8);
     }
   };

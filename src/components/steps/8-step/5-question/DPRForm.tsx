@@ -11,9 +11,19 @@ import {
   RadioGroup,
 } from '@mui/material';
 import { DPR_OPTIONS, LABELS } from 'shared/constants/questions';
+import { Option } from 'shared/interfaces/firestore-db';
+import { saveQuestionLocalStorage } from 'shared/util/util';
 
 export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
   const tfgValue = Number(localStorage.getItem('tfgValue') || '0');
+  const checkOptions = DPR_OPTIONS;
+  const optionArray: Option[] = checkOptions.map((option) => ({
+    label: option.LABEL,
+    selected: false,
+  }));
+
+  const [options, setOptions] = useState<Option[]>(optionArray);
+
   const [nextState, setNextState] = useState(9);
   let previousStep = tfgValue > 60 ? 3 : 7;
   useEffect(() => {
@@ -21,11 +31,29 @@ export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const optionSelected = event.target.value;
-    if (optionSelected === 'option6') {
+    const newOptions = options;
+    const selected = checkOptions.find(
+      (option) => option.NAME === event.target.value
+    );
+    const optionIndex = newOptions.findIndex(
+      (option) => option.label === selected!.LABEL
+    );
+
+    newOptions.forEach((option, index) => {
+      if (index === optionIndex) {
+        option.selected = true;
+      } else {
+        option.selected = false;
+      }
+    });
+    setOptions(newOptions);
+
+    if (event.target.value === 'option6') {
+      saveQuestionLocalStorage(5, LABELS.QUESTION_5.TITLE, false, options);
       setNextState(9);
     } else {
       localStorage.setItem('previousStep', '8');
+      saveQuestionLocalStorage(5, LABELS.QUESTION_5.TITLE, true, options);
       setNextState(13);
     }
   };
@@ -39,39 +67,39 @@ export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
           <FormLabel focused>Histórico familiar positivo</FormLabel>
           <RadioGroup name='history' onChange={handleChange}>
             <FormControlLabel
-              value='option1'
+              value={checkOptions[0].NAME}
               control={<Radio required />}
-              label={DPR_OPTIONS.POSITIVE_1}
+              label={checkOptions[0].LABEL}
             />
 
             <FormControlLabel
-              value='option2'
+              value={checkOptions[1].NAME}
               control={<Radio required />}
-              label={DPR_OPTIONS.POSITIVE_2}
+              label={checkOptions[1].LABEL}
             />
             <FormControlLabel
-              value='option3'
+              value={checkOptions[2].NAME}
               control={<Radio required />}
-              label={DPR_OPTIONS.POSITIVE_3}
+              label={checkOptions[2].LABEL}
             />
             <FormLabel focused>Histórico familiar negativo:</FormLabel>
             <FormControlLabel
-              value='option4'
+              value={checkOptions[3].NAME}
               control={<Radio required />}
-              label={DPR_OPTIONS.NEGATIVE_1}
+              label={checkOptions[3].LABEL}
             />
             <FormControlLabel
-              value='option5'
+              value={checkOptions[4].NAME}
               control={<Radio required />}
-              label={DPR_OPTIONS.NEGATIVE_2}
+              label={checkOptions[4].LABEL}
             />
             <FormLabel focused>
               Sem histórico e sem a presença de cistos:
             </FormLabel>
             <FormControlLabel
-              value='option6'
+              value={checkOptions[5].NAME}
               control={<Radio required />}
-              label={DPR_OPTIONS.OPTION_NONE}
+              label={checkOptions[5].LABEL}
             />
           </RadioGroup>
         </FormControl>

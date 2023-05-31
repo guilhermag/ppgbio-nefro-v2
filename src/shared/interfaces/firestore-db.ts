@@ -31,14 +31,12 @@ export interface Option {
   label: string;
 }
 
-export interface DataStorage {
+export interface FormData {
   age: string;
+  creatinine: string;
+  gender: string;
   ethnicity: string;
   tfgValue: string;
-  gender: string;
-  creatinine: string;
-  questions: QuestionStorage[];
-  resultForm: string;
 }
 
 export interface QuestionStorage {

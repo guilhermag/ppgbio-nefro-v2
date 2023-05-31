@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from '@firebase/firestore';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { CreateUser, UserData } from 'shared/interfaces/firestore-db';
+import { getFormResult } from 'shared/util/util';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -25,6 +26,16 @@ export async function getUsers(): Promise<UserData[]> {
   return data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as UserData));
 }
 
-export async function createUser(userData: CreateUser) {
-  await addDoc(usersCollection, userData);
+export async function saveUserData(finalStep: number) {
+  let userData: CreateUser | null;
+  if (finalStep === 13) {
+    userData = getFormResult(true);
+  } else {
+    userData = getFormResult(false);
+  }
+  if (userData) {
+    await addDoc(usersCollection, userData);
+  } else {
+    throw Error('Dado do formulário inválido');
+  }
 }

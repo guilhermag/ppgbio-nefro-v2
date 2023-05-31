@@ -4,7 +4,6 @@ import {
   Collapse,
   FormControl,
   FormControlLabel,
-  FormLabel,
   List,
   ListItemButton,
   ListItemText,
@@ -13,19 +12,45 @@ import {
 } from '@mui/material';
 import { LABELS, NEFROLIT_OPTIONS } from 'shared/constants/questions';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import { Option } from 'shared/interfaces/firestore-db';
+import { saveQuestionLocalStorage } from 'shared/util/util';
 
 export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
+  const checkOptions = NEFROLIT_OPTIONS;
+  const [options, setOptions] = useState<Option[]>([
+    { label: checkOptions[0].LABEL, selected: false },
+    { label: checkOptions[1].LABEL, selected: false },
+    { label: checkOptions[2].LABEL, selected: false },
+  ]);
   const [nextState, setNextState] = useState(9);
   useEffect(() => {
     selectSteps(nextState, 8);
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const optionSelected = event.target.value;
-    if (optionSelected === 'option3') {
+    const newOptions = options;
+    const selected = checkOptions.find(
+      (option) => option.NAME === event.target.value
+    );
+    const optionIndex = newOptions.findIndex(
+      (option) => option.label === selected!.LABEL
+    );
+
+    newOptions.forEach((option, index) => {
+      if (index === optionIndex) {
+        option.selected = true;
+      } else {
+        option.selected = false;
+      }
+    });
+    setOptions(newOptions);
+
+    if (event.target.value === 'option3') {
+      saveQuestionLocalStorage(6, LABELS.QUESTION_6.TITLE, false, options);
       setNextState(10);
     } else {
       localStorage.setItem('previousStep', '9');
+      saveQuestionLocalStorage(6, LABELS.QUESTION_6.TITLE, true, options);
       setNextState(13);
     }
   };
@@ -60,6 +85,17 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
       <div className='left-content'>
         <FormControl>
           <RadioGroup name='history' onChange={handleChange}>
+            {checkOptions.map((option, index) => (
+              <FormControlLabel
+                key={index}
+                value={option.NAME}
+                control={<Radio required />}
+                label={option.LABEL}
+              />
+            ))}
+          </RadioGroup>
+
+          {/* <RadioGroup name='history' onChange={handleChange}>
             <FormControlLabel
               value='option1'
               control={<Radio required />}
@@ -76,7 +112,7 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
               control={<Radio required />}
               label={NEFROLIT_OPTIONS.TREATED}
             />
-          </RadioGroup>
+          </RadioGroup> */}
         </FormControl>
       </div>
     </div>

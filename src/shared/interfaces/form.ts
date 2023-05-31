@@ -5,11 +5,3 @@ export interface FormComponent {
 export interface CheckerNextStep {
   selectSteps: (nextStep: number, previousStep: number) => void;
 }
-
-export interface FormData {
-  age: string;
-  creatinine: string;
-  gender: string;
-  ethnicity: string;
-  tfgValue?: string;
-}

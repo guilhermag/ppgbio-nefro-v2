@@ -26,9 +26,16 @@ import {
 import { Transition } from 'shared/elements/Transition';
 import hypertension from 'shared/assets/hypertension.jpeg';
 import './Hypertension.css';
+import { Option } from 'shared/interfaces/firestore-db';
+import { saveQuestionLocalStorage } from 'shared/util/util';
 
 export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
   const [counterSelected, setCounterSelected] = useState(0);
+  const checkOptions = HYPERTENSION_OPTIONS;
+  const [options, setOptions] = useState<Option[]>([
+    { label: checkOptions[0].LABEL, selected: false },
+    { label: checkOptions[1].LABEL, selected: false },
+  ]);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -39,21 +46,32 @@ export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
     setOpen(false);
   };
 
-  const checkOptions = HYPERTENSION_OPTIONS;
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newOptions = options;
+    const selected = checkOptions.find(
+      (option) => option.NAME === event.target.name
+    );
+    const optionIndex = newOptions.findIndex(
+      (option) => option.label === selected!.LABEL
+    );
+
     if (event.target.checked) {
+      newOptions[optionIndex].selected = true;
       setCounterSelected(counterSelected + 1);
     } else {
+      newOptions[optionIndex].selected = false;
       setCounterSelected(counterSelected - 1);
     }
+    setOptions(newOptions);
   };
 
   useEffect(() => {
     if (counterSelected >= 2) {
       localStorage.setItem('previousStep', '11');
+      saveQuestionLocalStorage(8, LABELS.QUESTION_8.TITLE, true, options);
       selectSteps(13, 10);
     } else {
+      saveQuestionLocalStorage(8, LABELS.QUESTION_8.TITLE, false, options);
       selectSteps(12, 10);
     }
   }, [counterSelected]);

@@ -9,6 +9,7 @@ import {
   RadioGroup,
 } from '@mui/material';
 import { LABELS } from 'shared/constants/questions';
+import { saveQuestionLocalStorage } from 'shared/util/util';
 
 export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(4);
@@ -19,8 +20,10 @@ export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === 'yes') {
       localStorage.setItem('previousStep', '4');
+      saveQuestionLocalStorage(1, LABELS.QUESTION_1.TITLE, true);
       setNextState(13);
     } else {
+      saveQuestionLocalStorage(1, LABELS.QUESTION_1.TITLE, false);
       setNextState(5);
     }
   };

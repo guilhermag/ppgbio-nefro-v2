@@ -22,16 +22,19 @@ import {
   INFECTION_OPTIONS,
   LABELS,
   PROPHYLAXIS_TABLE,
+  formControlLabelStyle,
 } from 'shared/constants/questions';
 import { conditionsInfection } from 'shared/assets/infection';
+import { Option } from 'shared/interfaces/firestore-db';
+import { saveQuestionLocalStorage } from 'shared/util/util';
 
 export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
-  const formControlLabelStyle = {
-    '& .MuiFormControlLabel-label': {
-      fontSize: '15px',
-    },
-  };
-
+  const checkOptions = INFECTION_OPTIONS;
+  const [options, setOptions] = useState<Option[]>([
+    { label: checkOptions[0].LABEL, selected: false },
+    { label: checkOptions[1].LABEL, selected: false },
+    { label: checkOptions[2].LABEL, selected: false },
+  ]);
   const [counterSelected, setCounterSelected] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -44,18 +47,31 @@ export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newOptions = options;
+    const selected = checkOptions.find(
+      (option) => option.NAME === event.target.name
+    );
+    const optionIndex = newOptions.findIndex(
+      (option) => option.label === selected!.LABEL
+    );
+
     if (event.target.checked) {
+      newOptions[optionIndex].selected = true;
       setCounterSelected(counterSelected + 1);
     } else {
-      setCounterSelected(counterSelected + -1);
+      newOptions[optionIndex].selected = false;
+      setCounterSelected(counterSelected - 1);
     }
+    setOptions(newOptions);
   };
 
   useEffect(() => {
     if (counterSelected >= 3) {
       localStorage.setItem('previousStep', '10');
+      saveQuestionLocalStorage(7, LABELS.QUESTION_7.TITLE, true, options);
       selectSteps(13, 9);
     } else {
+      saveQuestionLocalStorage(7, LABELS.QUESTION_7.TITLE, false, options);
       selectSteps(11, 9);
     }
   }, [counterSelected]);
@@ -123,21 +139,16 @@ export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
       <div>
         <FormControl>
           <FormGroup>
-            <FormControlLabel
-              control={<Checkbox name='name1' onChange={handleChange} />}
-              label={INFECTION_OPTIONS.OPTION_1}
-              sx={{ ...formControlLabelStyle }}
-            />
-            <FormControlLabel
-              control={<Checkbox name='name1' onChange={handleChange} />}
-              label={INFECTION_OPTIONS.OPTION_2}
-              sx={{ ...formControlLabelStyle }}
-            />
-            <FormControlLabel
-              control={<Checkbox name='name1' onChange={handleChange} />}
-              label={INFECTION_OPTIONS.OPTION_3}
-              sx={{ ...formControlLabelStyle }}
-            />
+            {checkOptions.map((option, index) => (
+              <FormControlLabel
+                key={index}
+                control={
+                  <Checkbox name={option.NAME} onChange={handleChange} />
+                }
+                label={option.LABEL}
+                sx={{ ...formControlLabelStyle }}
+              />
+            ))}
           </FormGroup>
         </FormControl>
       </div>

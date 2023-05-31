@@ -7,32 +7,64 @@ export const HEMAT_OPTIONS = [
   { NAME: 'dysmorphic', LABEL: 'Pesquisa de hemácias dismórficas positivo.' },
 ];
 
-export const DPR_OPTIONS = {
-  POSITIVE_1:
-    'Pacientes com idade entre 15 e 39 anos com três ou mais cistos uni ou bilaterais.',
-  POSITIVE_2:
-    'Paciente com idade entre 40 e 59 anos com dois ou mais cistos em cada rim.',
-  POSITIVE_3:
-    'Paciente com idade igual ou superior a 60 anos com quatro ou mais cistos em cada rim.',
-  NEGATIVE_1:
-    '10 ou mais cistos em cada rim, principalmente se rins aumentados bilateralmente.',
-  NEGATIVE_2:
-    'Presença concomitante de cistos hepáticos, pancreáticos ou esplênicos.',
-  OPTION_NONE: 'Nenhum histórico e sem presença de cistos',
-};
+export const DPR_OPTIONS = [
+  {
+    NAME: 'option1',
+    LABEL:
+      'Pacientes com idade entre 15 e 39 anos com três ou mais cistos uni ou bilaterais.',
+  },
+  {
+    NAME: 'option2',
+    LABEL:
+      'Paciente com idade entre 40 e 59 anos com dois ou mais cistos em cada rim.',
+  },
+  {
+    NAME: 'option3',
+    LABEL:
+      'Paciente com idade igual ou superior a 60 anos com quatro ou mais cistos em cada rim.',
+  },
+  {
+    NAME: 'option4',
+    LABEL:
+      '10 ou mais cistos em cada rim, principalmente se rins aumentados bilateralmente.',
+  },
+  {
+    NAME: 'option5',
+    LABEL:
+      'Presença concomitante de cistos hepáticos, pancreáticos ou esplênicos.',
+  },
+  { NAME: 'option6', LABEL: 'Nenhum histórico e sem presença de cistos.' },
+];
 
-export const NEFROLIT_OPTIONS = {
-  IDENTIFIED: 'Identificou causa metabólica, mas não conseguiu tratar.',
-  NOT_IDENTIFIED: 'Não conseguiu identificar a causa metabólica.',
-  TREATED: 'Identificou e tratou a causa metabólica.',
-  NONE: 'Não apresenta nefrolitíase recorrente.',
-};
+export const NEFROLIT_OPTIONS = [
+  {
+    NAME: 'option1',
+    LABEL: 'Identificou causa metabólica, mas não conseguiu tratar.',
+  },
+  { NAME: 'option2', LABEL: 'Não conseguiu identificar a causa metabólica.' },
+  { NAME: 'option3', LABEL: 'Identificou e tratou a causa metabólica.' },
+];
 
-export const INFECTION_OPTIONS = {
-  OPTION_1:
-    'Três ou mais infecções urinárias no período de um ano, mesmo com profilaxia adequada.',
-  OPTION_2: 'Exclusão de causas anatômicas urológicas ou ginecológicas.',
-  OPTION_3: 'Profilaxia realizada corretamente.',
+export const INFECTION_OPTIONS = [
+  {
+    NAME: 'option1',
+    LABEL:
+      'Três ou mais infecções urinárias no período de um ano, mesmo com profilaxia adequada.',
+  },
+  {
+    NAME: 'option2',
+    LABEL: 'Exclusão de causas anatômicas urológicas ou ginecológicas.',
+  },
+  {
+    NAME: 'option3',
+    LABEL: 'Profilaxia realizada corretamente.',
+  },
+];
+
+export const formControlLabelStyle = {
+  '& .MuiFormControlLabel-label': {
+    fontSize: '15px',
+  },
 };
 
 export const PROPHYLAXIS_TABLE = {

@@ -1,7 +1,7 @@
 // Step 2
 
 import React, { useEffect, useState } from 'react';
-import { CheckerNextStep, FormData } from 'shared/interfaces/form';
+import { CheckerNextStep } from 'shared/interfaces/form';
 import {
   Box,
   FormControl,
@@ -16,8 +16,13 @@ import {
   SelectChangeEvent,
   TextField,
 } from '@mui/material';
-import { checkFormDataIsPopulated, getTFG } from 'shared/util/util';
+import {
+  checkFormDataIsPopulated,
+  getTFG,
+  saveFormDataLocalStorage,
+} from 'shared/util/util';
 import './TFGForm.css';
+import { FormData } from 'shared/interfaces/firestore-db';
 
 export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
   const [age, setAge] = useState('');
@@ -44,6 +49,7 @@ export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
       creatinine: creatinine,
       gender: gender,
       ethnicity: ethnicity,
+      tfgValue: '0',
     };
 
     const dataCheck = checkFormDataIsPopulated(formData);
@@ -51,7 +57,7 @@ export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
     if (dataCheck) {
       const tfg = getTFG(ethnicity, gender, creatinine, age);
       formData.tfgValue = tfg;
-      localStorage.setItem('formData', JSON.stringify(formData));
+      saveFormDataLocalStorage(formData);
       selectSteps(3, 1);
     } else {
       selectSteps(2, 1);
