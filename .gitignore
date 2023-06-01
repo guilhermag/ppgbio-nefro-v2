@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 .env
-src/services/mock-data.ts
+src/services/mock.ts
 
 # Editor directories and files
 .vscode/*
