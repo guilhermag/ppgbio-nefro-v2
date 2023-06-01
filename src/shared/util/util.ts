@@ -1,11 +1,4 @@
-import {
-  CreateUser,
-  FormData,
-  Option,
-  OptionStorage,
-  Question,
-  QuestionStorage,
-} from 'shared/interfaces/firestore-db';
+import { FormData } from 'shared/interfaces/firestore-db';
 import * as CONSTS from '../constants';
 
 export function checkFormDataIsPopulated(data: FormData): boolean {

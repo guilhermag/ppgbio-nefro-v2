@@ -10,8 +10,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { getFormResult, selectStageByTFG } from 'shared/util/util';
-import { CreateUser } from 'shared/interfaces/firestore-db';
+import { selectStageByTFG } from 'shared/util/util';
 
 function createData(stage: string, tfg: string, renalInsufficiency: string) {
   return { stage, tfg, renalInsufficiency };
