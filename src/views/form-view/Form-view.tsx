@@ -37,7 +37,7 @@ import { FormComponent } from 'shared/interfaces/form';
 import { useForm } from 'hooks/useForm';
 import { TabsControl } from 'shared/interfaces/table';
 
-export const FormView = ({ controlTab }: TabsControl) => {
+export default function FormView({ controlTab }: TabsControl) {
   const [nextStep, setNextStep] = useState(0);
   const [click, setClick] = useState(0);
   const [previousStep, setPreviousStep] = useState(0);
@@ -110,6 +110,7 @@ export const FormView = ({ controlTab }: TabsControl) => {
     if (currentStep !== 0) {
       controlTab(true, true);
     } else {
+      setDisableSaveButton(false);
       controlTab(false, false);
     }
   }, [currentComponent.component]);
@@ -207,4 +208,4 @@ export const FormView = ({ controlTab }: TabsControl) => {
       </div>
     </div>
   );
-};
+}

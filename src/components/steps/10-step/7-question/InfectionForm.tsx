@@ -25,8 +25,8 @@ import {
   formControlLabelStyle,
 } from 'shared/constants/questions';
 import { conditionsInfection } from 'shared/assets/infection';
-import { Option } from 'shared/interfaces/firestore-db';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Option, Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
   const checkOptions = INFECTION_OPTIONS;
@@ -66,14 +66,21 @@ export const InfectionForm = ({ selectSteps }: CheckerNextStep) => {
   };
 
   useEffect(() => {
+    const question: Question = {
+      label: LABELS.QUESTION_7.TITLE,
+      number: 7,
+      options,
+      result: false,
+    };
+
     if (counterSelected >= 3) {
       localStorage.setItem('previousStep', '10');
-      saveQuestionLocalStorage(7, LABELS.QUESTION_7.TITLE, true, options);
+      question.result = true;
       selectSteps(13, 9);
     } else {
-      saveQuestionLocalStorage(7, LABELS.QUESTION_7.TITLE, false, options);
       selectSteps(11, 9);
     }
+    setQuestion(question, 'question7');
   }, [counterSelected]);
 
   return (

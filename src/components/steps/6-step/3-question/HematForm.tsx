@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { CheckerNextStep } from 'shared/interfaces/form';
-import { Option } from 'shared/interfaces/firestore-db';
+import { Option, Question } from 'shared/interfaces/firestore-db';
 import {
   Checkbox,
   FormControl,
@@ -12,7 +12,7 @@ import {
 import { HEMAT_OPTIONS, LABELS } from 'shared/constants/questions';
 import hematImage from 'shared/assets/hemat.png';
 import './HematForm.css';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { setQuestion } from 'shared/util/questions';
 
 export const HematForm = ({ selectSteps }: CheckerNextStep) => {
   const checkOptions = HEMAT_OPTIONS;
@@ -42,14 +42,21 @@ export const HematForm = ({ selectSteps }: CheckerNextStep) => {
   };
 
   useEffect(() => {
+    const question: Question = {
+      label: LABELS.QUESTION_3.TITLE,
+      number: 3,
+      options,
+      result: false,
+    };
+
     if (counterSelected >= 1) {
       localStorage.setItem('previousStep', '6');
-      saveQuestionLocalStorage(3, LABELS.QUESTION_3.TITLE, true, options);
+      question.result = true;
       selectSteps(13, 5);
     } else {
-      saveQuestionLocalStorage(3, LABELS.QUESTION_3.TITLE, false, options);
       selectSteps(7, 5);
     }
+    setQuestion(question, 'question3');
   }, [counterSelected]);
 
   return (

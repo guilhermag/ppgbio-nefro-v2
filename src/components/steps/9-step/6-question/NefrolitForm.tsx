@@ -12,8 +12,8 @@ import {
 } from '@mui/material';
 import { LABELS, NEFROLIT_OPTIONS } from 'shared/constants/questions';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import { Option } from 'shared/interfaces/firestore-db';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Option, Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
   const checkOptions = NEFROLIT_OPTIONS;
@@ -25,7 +25,7 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(9);
   useEffect(() => {
     selectSteps(nextState, 8);
-  });
+  }, [nextState]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newOptions = options;
@@ -45,14 +45,21 @@ export const NefrolitForm = ({ selectSteps }: CheckerNextStep) => {
     });
     setOptions(newOptions);
 
+    const question: Question = {
+      label: LABELS.QUESTION_6.TITLE,
+      number: 6,
+      options,
+      result: false,
+    };
+
     if (event.target.value === 'option3') {
-      saveQuestionLocalStorage(6, LABELS.QUESTION_6.TITLE, false, options);
       setNextState(10);
     } else {
       localStorage.setItem('previousStep', '9');
-      saveQuestionLocalStorage(6, LABELS.QUESTION_6.TITLE, true, options);
+      question.result = true;
       setNextState(13);
     }
+    setQuestion(question, 'question6');
   };
 
   const [open, setOpen] = useState(false);

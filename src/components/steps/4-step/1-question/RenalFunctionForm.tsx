@@ -9,7 +9,8 @@ import {
   RadioGroup,
 } from '@mui/material';
 import { LABELS } from 'shared/constants/questions';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(4);
@@ -18,14 +19,21 @@ export const RenalFunctionForm = ({ selectSteps }: CheckerNextStep) => {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const question: Question = {
+      label: LABELS.QUESTION_1.TITLE,
+      number: 1,
+      options: [],
+      result: false,
+    };
+
     if (event.target.value === 'yes') {
       localStorage.setItem('previousStep', '4');
-      saveQuestionLocalStorage(1, LABELS.QUESTION_1.TITLE, true);
+      question.result = true;
       setNextState(13);
     } else {
-      saveQuestionLocalStorage(1, LABELS.QUESTION_1.TITLE, false);
       setNextState(5);
     }
+    setQuestion(question, 'question1');
   };
 
   return (

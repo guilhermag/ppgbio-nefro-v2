@@ -38,15 +38,3 @@ export interface FormData {
   ethnicity: string;
   tfgValue: string;
 }
-
-export interface QuestionStorage {
-  number: string;
-  label: string;
-  options: OptionStorage[];
-  result: string;
-}
-
-export interface OptionStorage {
-  selected: string;
-  label: string;
-}

@@ -26,8 +26,8 @@ import {
 import { Transition } from 'shared/elements/Transition';
 import hypertension from 'shared/assets/hypertension.jpeg';
 import './Hypertension.css';
-import { Option } from 'shared/interfaces/firestore-db';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Option, Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
   const [counterSelected, setCounterSelected] = useState(0);
@@ -66,14 +66,21 @@ export const HypertensionForm = ({ selectSteps }: CheckerNextStep) => {
   };
 
   useEffect(() => {
+    const question: Question = {
+      label: LABELS.QUESTION_3.TITLE,
+      number: 3,
+      options,
+      result: false,
+    };
+
     if (counterSelected >= 2) {
       localStorage.setItem('previousStep', '11');
-      saveQuestionLocalStorage(8, LABELS.QUESTION_8.TITLE, true, options);
+      question.result = true;
       selectSteps(13, 10);
     } else {
-      saveQuestionLocalStorage(8, LABELS.QUESTION_8.TITLE, false, options);
       selectSteps(12, 10);
     }
+    setQuestion(question, 'question8');
   }, [counterSelected]);
 
   return (

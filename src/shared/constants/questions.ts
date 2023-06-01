@@ -124,6 +124,7 @@ export const HYPERTENSION_TABLE = {
 
 export const LABELS = {
   QUESTION_1: {
+    SHORT: 'Perda função renal',
     TITLE: 'Perda rápida da função renal',
     SUBTITLE:
       'O paciente possui Perda rápida da função renal ? Maior que 5 ml/min/ 1.73 m2, confirmados em dois exames em um intervalo de 6 meses.',
@@ -165,3 +166,42 @@ export const LABELS = {
     SUBTITLE: 'O paciente possui diabetes e macroalbuminúria ?',
   },
 };
+
+export const QUESTIONS_CAPTION = [
+  {
+    key: 'P1',
+    label: LABELS.QUESTION_1.TITLE,
+  },
+  {
+    key: 'P2',
+    label: LABELS.QUESTION_2.TITLE,
+  },
+  {
+    key: 'P3',
+    label: LABELS.QUESTION_3.TITLE,
+  },
+  {
+    key: 'P4',
+    label: LABELS.QUESTION_4.TITLE,
+  },
+  {
+    key: 'P5',
+    label: LABELS.QUESTION_5.TITLE,
+  },
+  {
+    key: 'P6',
+    label: LABELS.QUESTION_6.TITLE,
+  },
+  {
+    key: 'P7',
+    label: LABELS.QUESTION_7.TITLE,
+  },
+  {
+    key: 'P8',
+    label: LABELS.QUESTION_8.TITLE,
+  },
+  {
+    key: 'P9',
+    label: LABELS.QUESTION_9.TITLE,
+  },
+];

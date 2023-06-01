@@ -142,12 +142,12 @@ export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
             </RadioGroup>
           </FormControl>
           <FormControl fullWidth>
-            <InputLabel id='demo-simple-select-label'>Etnia</InputLabel>
+            <InputLabel id='demo-simple-select-label'>Raça</InputLabel>
             <Select
               labelId='demo-simple-select-label'
               id='demo-simple-select'
               value={ethnicity}
-              label='Etnia'
+              label='Raça'
               onChange={handleChangeSelect}
               required
             >

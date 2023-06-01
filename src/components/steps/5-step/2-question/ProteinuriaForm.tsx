@@ -17,7 +17,8 @@ import {
 } from '@mui/material';
 import './ProteinuriaForm.css';
 import { LABELS } from 'shared/constants/questions';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const ProteinuriaForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(5);
@@ -31,14 +32,21 @@ export const ProteinuriaForm = ({ selectSteps }: CheckerNextStep) => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const question: Question = {
+      label: LABELS.QUESTION_2.TITLE,
+      number: 2,
+      options: [],
+      result: false,
+    };
+
     if (event.target.value === 'yes') {
       localStorage.setItem('previousStep', '5');
-      saveQuestionLocalStorage(2, LABELS.QUESTION_2.TITLE, true);
+      question.result = true;
       setNextState(13);
     } else {
-      saveQuestionLocalStorage(2, LABELS.QUESTION_2.TITLE, false);
       setNextState(6);
     }
+    setQuestion(question, 'question2');
   };
 
   return (

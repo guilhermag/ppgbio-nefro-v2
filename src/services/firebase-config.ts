@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from '@firebase/firestore';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { CreateUser, UserData } from 'shared/interfaces/firestore-db';
-import { getFormResult } from 'shared/util/util';
+import { getFormResult } from 'shared/util/questions';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,

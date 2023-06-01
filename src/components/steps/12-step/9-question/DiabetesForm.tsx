@@ -12,7 +12,8 @@ import diabetes from 'shared/assets/diabetes.jpeg';
 import macroalb from 'shared/assets/macroalb.jpeg';
 import './DiabetesForm.css';
 import { LABELS } from 'shared/constants/questions';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
   const [nextState, setNextState] = useState(12);
@@ -21,14 +22,21 @@ export const DiabetesForm = ({ selectSteps }: CheckerNextStep) => {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const question: Question = {
+      label: LABELS.QUESTION_9.TITLE,
+      number: 9,
+      options: [],
+      result: false,
+    };
+
     if (event.target.value === 'yes') {
       localStorage.setItem('previousStep', '12');
-      saveQuestionLocalStorage(9, LABELS.QUESTION_1.TITLE, true);
+      question.result = true;
       setNextState(13);
     } else {
-      saveQuestionLocalStorage(9, LABELS.QUESTION_1.TITLE, false);
       setNextState(14);
     }
+    setQuestion(question, 'question9');
   };
 
   return (

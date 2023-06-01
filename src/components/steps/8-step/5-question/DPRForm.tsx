@@ -11,8 +11,8 @@ import {
   RadioGroup,
 } from '@mui/material';
 import { DPR_OPTIONS, LABELS } from 'shared/constants/questions';
-import { Option } from 'shared/interfaces/firestore-db';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Option, Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
   const tfgValue = Number(localStorage.getItem('tfgValue') || '0');
@@ -48,14 +48,21 @@ export const DPRForm = ({ selectSteps }: CheckerNextStep) => {
     });
     setOptions(newOptions);
 
+    const question: Question = {
+      label: LABELS.QUESTION_5.TITLE,
+      number: 5,
+      options,
+      result: false,
+    };
+
     if (event.target.value === 'option6') {
-      saveQuestionLocalStorage(5, LABELS.QUESTION_5.TITLE, false, options);
       setNextState(9);
     } else {
       localStorage.setItem('previousStep', '8');
-      saveQuestionLocalStorage(5, LABELS.QUESTION_5.TITLE, true, options);
+      question.result = true;
       setNextState(13);
     }
+    setQuestion(question, 'question5');
   };
 
   return (

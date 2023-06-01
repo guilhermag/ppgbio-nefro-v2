@@ -12,7 +12,8 @@ import './CilinderForm.css';
 import { QuestionMarkTooltip } from 'shared/elements/QuestionMarkTooltip';
 import cilinder from 'shared/assets/cilinder.jpeg';
 import { LABELS } from 'shared/constants/questions';
-import { saveQuestionLocalStorage } from 'shared/util/util';
+import { Question } from 'shared/interfaces/firestore-db';
+import { setQuestion } from 'shared/util/questions';
 
 export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
   const tooltipText = ' cilindros ';
@@ -23,14 +24,21 @@ export const CilinderForm = ({ selectSteps }: CheckerNextStep) => {
     selectSteps(nextState, 6);
   });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const question: Question = {
+      label: LABELS.QUESTION_4.TITLE,
+      number: 4,
+      options: [],
+      result: false,
+    };
+
     if (event.target.value === 'yes') {
       localStorage.setItem('previousStep', '7');
-      saveQuestionLocalStorage(4, LABELS.QUESTION_4.TITLE, true);
+      question.result = true;
       setNextState(13);
     } else {
-      saveQuestionLocalStorage(4, LABELS.QUESTION_4.TITLE, false);
       setNextState(8);
     }
+    setQuestion(question, 'question4');
   };
 
   return (

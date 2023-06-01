@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { FormView } from 'views/form-view/Form-view';
-import { TableViewComponent } from 'views/table-view/Table-view';
+import FormView from 'views/form-view/Form-view';
+import TableView from 'views/table-view/Table-view';
 import 'App.css';
 
 interface TabPanelProps {
@@ -79,7 +79,8 @@ export default function BasicTabs() {
           <FormView controlTab={controlTab} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <TableViewComponent controlTab={controlTab} />
+          <TableView />
+          {/* <TableViewComponent controlTab={controlTab} /> */}
         </TabPanel>
         <div className='disclaimer center-content'>
           <div className=''>
