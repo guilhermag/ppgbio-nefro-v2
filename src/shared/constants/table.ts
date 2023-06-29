@@ -1,5 +1,33 @@
-import { GridColDef, GridLocaleText } from '@mui/x-data-grid';
+import {
+  GridColDef,
+  GridLocaleText,
+  GridValueGetterParams,
+} from '@mui/x-data-grid';
 import { LABELS } from './questions';
+
+export function generateQuestions(params: GridValueGetterParams) {
+  const question1 = `${params.row.question1}; `;
+  const question2 = `${params.row.question2}; `;
+  const question3 = `${params.row.question3}; `;
+  const question4 = `${params.row.question4}; `;
+  const question5 = `${params.row.question5}; `;
+  const question6 = `${params.row.question6}; `;
+  const question7 = `${params.row.question7}; `;
+  const question8 = `${params.row.question8}; `;
+  const question9 = `${params.row.question9};`;
+
+  return (
+    question1 +
+    question2 +
+    question3 +
+    question4 +
+    question5 +
+    question6 +
+    question7 +
+    question8 +
+    question9
+  );
+}
 
 export const COLUMNS: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
