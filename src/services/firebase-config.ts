@@ -21,7 +21,9 @@ export async function getUsers(): Promise<UserData[]> {
   if (usersCollection.id !== import.meta.env.VITE_DB_NAME) {
     throw Error('colecao de dados nao existe!');
   }
-  const data = await getDocs(usersCollection);
+  //commented to control api calls
+  //const data = await getDocs(usersCollection);
+  const data = {docs: []};
 
   return data.docs.map((doc) => ({ ...doc.data(), id: doc.id } as UserData));
 }
