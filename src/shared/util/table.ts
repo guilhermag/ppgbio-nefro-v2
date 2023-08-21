@@ -16,7 +16,7 @@ export function findQuestion(
 
 export function convertToDataTable(user: UserData, index: number): DataTable {
   return {
-    id: index,
+    id: index + 1,
     age: user.age,
     creatinine: user.creatinine,
     ethnicity: user.ethnicity === 'white' ? 'Branca' : 'Negra',

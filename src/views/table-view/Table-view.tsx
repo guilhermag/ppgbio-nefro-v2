@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { COLUMNS, LOCALE_TEXT_PT } from 'shared/constants/table';
@@ -7,22 +7,31 @@ import { convertToDataTable } from 'shared/util/table';
 import { getUsers } from 'services/firebase-config';
 import { UserData } from 'shared/interfaces/firestore-db';
 
-const columns: GridColDef[] = COLUMNS;
-const rows: DataTable[] = [];
-
-getUsers()
-  .then((res) => {
-    res.forEach((user, index) => {
-      rows.push(convertToDataTable(user, index));
-    });
-  })
-  .catch((e) => {
-    console.error(e);
-  });
-
 export default function TableView() {
-  return (
-    <Box sx={{ height: 500, width: '100%' }}>
+  const columns: GridColDef[] = COLUMNS;
+  const [rows, setRowsData] = useState<DataTable[]>([]);
+  const [rowsLoaded, setRowsLoaded] = useState(false);
+  useEffect(() => {
+    getUsers()
+      .then((res) => {
+        if (res.length !== rows.length) {
+          let rowsCall: DataTable[] = [];
+          res.forEach((user, index) => {
+            rowsCall.push(convertToDataTable(user, index));
+          });
+          setRowsData(rowsCall);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      })
+      .finally(() => {
+        setRowsLoaded(true);
+      });
+  }, []);
+
+  return rowsLoaded ? (
+    <Box sx={{ height: 650, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -30,7 +39,7 @@ export default function TableView() {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 10,
             },
           },
         }}
@@ -39,5 +48,7 @@ export default function TableView() {
         localeText={LOCALE_TEXT_PT}
       />
     </Box>
+  ) : (
+    <p>Carregando dados</p>
   );
 }
