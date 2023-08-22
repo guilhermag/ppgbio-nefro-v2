@@ -109,7 +109,7 @@ export const TFGForm = ({ selectSteps }: CheckerNextStep) => {
             helperText='Ex: 0.80'
             InputProps={{
               inputProps: {
-                max: 3.0,
+                max: 30.0,
                 min: 0.0,
                 step: 0.01,
               },
